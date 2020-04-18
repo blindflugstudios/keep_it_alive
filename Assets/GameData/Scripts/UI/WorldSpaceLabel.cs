@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class WorldSpaceLabel : MonoBehaviour
 {
     [SerializeField] private Text _text;
-
+    private Transform _anchor;
     public void DisplayText(string text, Color color)
     {
         _text.text = text;
@@ -16,8 +17,16 @@ public class WorldSpaceLabel : MonoBehaviour
         DisplayText(text, Color.white);
     }
 
-    public void SetAnchor(Vector3 position)
+    public void SetAnchor(Transform anchor)
     {
-        transform.position = position;
+        _anchor = anchor;
+    }
+
+    private void Update()
+    {
+        if (_anchor != null)
+        {
+            transform.position = _anchor.position;
+        }
     }
 }

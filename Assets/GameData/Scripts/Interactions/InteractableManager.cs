@@ -80,7 +80,7 @@ public class InteractableManager : MonoBehaviour
             Interactable = interactable;
             _player = player;
             _label = label;
-            _label.SetAnchor((interactable as MonoBehaviour).transform.position);
+            _label.SetAnchor((interactable as MonoBehaviour).transform);
             Update();
         }
 
@@ -101,7 +101,7 @@ public class InteractableManager : MonoBehaviour
 
         public void DisplayInteractionText()
         {
-            _label.DisplayText(Interactable.InteractText, Color.white);
+            _label.DisplayText(Interactable.InteractText(_player), Color.white);
         }
 
         public void Destroy()

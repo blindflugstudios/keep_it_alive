@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class FuelInteractable : MonoBehaviour, IInteractable
 {
-    public string InteractText => "Pick up";
+    public FuelType FuelType = FuelType.Stone;
+    
+    string IInteractable.InteractText(Player player)
+    {
+        return "Pick up";
+    }
+
     public string NoInteractText => "Can't pick up";
 
     public void Interact(Player player, InteractionType type)
