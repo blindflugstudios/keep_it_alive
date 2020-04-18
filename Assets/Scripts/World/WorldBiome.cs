@@ -9,6 +9,7 @@ namespace KeepItAlive.World
         public Vector2 Position { get; }
         public float Size { get; }
         public Color Color { get; }
+        public List<WorldPrefab> PrefabsInBiome { get; }
 
         public WorldBiome(int id, Vector2 pos, WorldBiomeSettings biomeSettings)
         {
@@ -17,6 +18,7 @@ namespace KeepItAlive.World
             Position = pos;
             Size = biomeSettings.Size;
             Color = biomeSettings.Color;
+            PrefabsInBiome = new List<WorldPrefab>();
         }
     }
 }

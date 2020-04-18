@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,13 +32,13 @@ namespace KeepItAlive.World
             Instance = this;
         }
 
-        [ContextMenu("Generate")]
         public void Generate()
         {
             _spawnedBiomes.Clear();
             _spawnedShards.Clear();
             _spawnedPrefabs.Clear();
             
+            //Spawning biomes
             var gridCount = Mathf.CeilToInt(_settings.WorldSize / _settings.BiomeGridSize);
             for (var y = 0; y < gridCount; ++y)
             {
@@ -52,6 +53,40 @@ namespace KeepItAlive.World
                     var pos = new Vector2(x, y) * _settings.BiomeGridSize + biome.Offset * Random.value;
                     _spawnedBiomes.Add(new WorldBiome(biomeID, pos, biome));
                 }
+            }
+            
+            //Spawning Shards
+            var shardsToSpawn = _settings.Shards.OrderBy(a => Guid.NewGuid()).ToArray();
+            var rowCount = Mathf.CeilToInt(Mathf.Sqrt(shardsToSpawn.Length));
+            var rndCells = Enumerable.Range(0, rowCount * rowCount).OrderBy(a => Guid.NewGuid()).ToList();
+            var cellSize = _settings.WorldSize / rowCount;
+            
+            for (var i = 0; i < shardsToSpawn.Length; i++)
+            {
+                var shard = shardsToSpawn[i];
+                var cell = rndCells[i];
+                var spawnedShard = Instantiate(shard.gameObject);
+                var shardComponent = spawnedShard.GetComponent<WorldShard>();
+                
+                var (shardOffset, shardSize) = shardComponent.GetSpawnBox();
+                var shardMaxSize = Mathf.Max(shardSize.x, shardSize.y);
+
+                var cellPos = (float) cell / rowCount;
+                var posY = Mathf.Floor(cellPos) * cellSize + Random.value * (cellSize - shardMaxSize);
+                var posX = (cellPos - Mathf.Floor(cellPos)) * cellSize + Random.value * (cellSize - shardMaxSize);
+
+                Debug.Log($"Spawning Shard: {shard.name} on position: [{posX}, {posY}] in cell: {cell}");
+                spawnedShard.transform.position = new Vector3(posX, posY, .0f);
+                _spawnedShards.Add(spawnedShard.GetComponent<WorldShard>());
+            }
+            
+            for (var i = 0; i < rndCells.Count; i++)
+            {
+                var cell = rndCells[i];
+                var cellPos = (float) cell / rowCount;
+                var posY = Mathf.Floor(cellPos) * cellSize;
+                var posX = (cellPos - Mathf.Floor(cellPos)) * (rowCount * cellSize);
+                Instantiate(_spawnedShards[0], new Vector3(posX, posY), Quaternion.identity);
             }
         }
 
@@ -103,7 +138,7 @@ namespace KeepItAlive.World
                 for (var i = 0; i < _spawnedBiomes.Count; i++)
                 {
                     UnityEditor.Handles.color = _spawnedBiomes[i].Color;
-                    UnityEditor.Handles.DrawWireDisc(_spawnedBiomes[i].Position, Vector3.forward, _spawnedBiomes[i].Size);
+                    UnityEditor.Handles.DrawWireCube(_spawnedBiomes[i].Position, new Vector3(_spawnedBiomes[i].Size, _spawnedBiomes[i].Size, 0.02f));
                 }
             }
             UnityEditor.Handles.color = color;

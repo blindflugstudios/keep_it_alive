@@ -2,20 +2,13 @@
 
 namespace KeepItAlive.World
 {
-    [RequireComponent(typeof(Collider2D))]
     public class WorldPrefab : MonoBehaviour
     {
-        private Collider2D _collider;
-
-        public void Awake()
-        {
-            _collider = GetComponent<Collider2D>();
-        }
+        [SerializeField] private Collider2D _collider;
 
         public (Vector2, Vector2) GetSpawnBox()
         {
-            return (new Vector2(transform.position.x, transform.position.y) + _collider.offset,
-                _collider.bounds.extents);
+            return (_collider.bounds.center, _collider.bounds.extents);
         }
         
         #if UNITY_EDITOR
