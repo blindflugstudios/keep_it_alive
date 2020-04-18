@@ -15,12 +15,7 @@ namespace KeepItAlive.Player
         public Sprite Sprite => _sprite;
 
         public float Health => _health;
-        
-        public Player(float initialHealth)
-        {
-            _health = initialHealth;
-        }
-
+    
         public void Die()
         {
             DeathAnimation();

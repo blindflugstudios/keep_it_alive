@@ -18,11 +18,6 @@ namespace KeepItAlive.Enemies
         public Sprite Sprite => _sprite;
 
         public float Health => _health;
-        
-        public Enemy(float initialHealth)
-        {
-            _health = initialHealth;
-        }
 
         public void Die()
         {
