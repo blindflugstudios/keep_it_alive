@@ -21,6 +21,11 @@ namespace KeepItAlive.Player
 
         public float Health => _health;
 
+        public void Start()
+        {
+            _damageManager = new DamageManager(_environmentalDamageConfiguration);
+        }
+
         public void Update()
         {
             _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   

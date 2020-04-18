@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KeepItAlive.Shared;
 using UnityEngine;
 
 namespace KeepItAlive.Player
@@ -36,7 +35,7 @@ namespace KeepItAlive.Player
             return health - _environmentalDamageConfiguration.FreezeDamagePerTick;
         }
 
-        private void Radiate(float health)
+        private float Radiate(float health)
         {
            return health - _environmentalDamageConfiguration.RadiationDamagePerTick;
         }

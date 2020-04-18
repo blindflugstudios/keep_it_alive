@@ -250,6 +250,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8543217198927219637}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &973031810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8543217199596159543, guid: be0e1d7b2a3dd57ffb2d20a601c81af5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8543217198927219637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52004cba43edc7369bc7aff477f4a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1036550152
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +481,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8263053741403113939, guid: 58807b1347c4776be8b8663616a4c430,
+        type: 3}
+      propertyPath: _environmentalDamageConfiguration
+      value: 
+      objectReference: {fileID: 973031810}
+    - target: {fileID: 8263053741403113939, guid: 58807b1347c4776be8b8663616a4c430,
+        type: 3}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58807b1347c4776be8b8663616a4c430, type: 3}
 --- !u!1001 &8543217198927219637
@@ -537,6 +559,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnviromentDamageConfiguration
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543217199596159543, guid: be0e1d7b2a3dd57ffb2d20a601c81af5,
+        type: 3}
+      propertyPath: _freezeDamagePerTick
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543217199596159543, guid: be0e1d7b2a3dd57ffb2d20a601c81af5,
+        type: 3}
+      propertyPath: _radiationDamagePerTick
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be0e1d7b2a3dd57ffb2d20a601c81af5, type: 3}
