@@ -7,6 +7,9 @@ public class TorchInteractable : MonoBehaviour, IInteractable
     private readonly string _pickUpString = "Pick Up";
     private readonly string _putDownString = "Put Down";
 
+    [SerializeField]
+    private TorchFuelController _torchFuelController;
+  
     public string InteractText(Player player)
     {
         var text = string.Empty;
@@ -25,7 +28,16 @@ public class TorchInteractable : MonoBehaviour, IInteractable
         {
             var fuelType = player.Inventory.HeldFuelType;
             player.Inventory.ConsumeHeldItem();
+            
             //feed the torch
+            switch(fuelType)
+            {
+                case FuelType.Stone:
+                    _torchFuelController.AddFuel(10.0f);
+                    break;
+                default:
+                    break;
+            }   
         }
         else if (interactionType == InteractionType.PickUp)
         {
