@@ -40,7 +40,7 @@ namespace KeepItAlive.Player
         private bool DieCondition()
         {
             //TODO: Discuss and probably more to come
-            return _health >= 0.0f;
+            return _health < 0.0f;
         }
 
         private void DeathAnimation()
