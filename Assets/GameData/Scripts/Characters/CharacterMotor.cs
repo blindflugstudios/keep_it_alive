@@ -18,7 +18,9 @@ namespace KeepItAlive.Characters
 		private Vector2 _currentVelocity;
 		private RaycastHit2D[] _hits;
 		private Vector2[] _raycastOrigins;
-		
+
+		public Vector2 CurrentVelocity => _currentVelocity;
+
 		public void Move(float x, float y)
 		{
 			_currentVelocity = _moveSpeed * new Vector2(x, y * _depthMovementScale);
