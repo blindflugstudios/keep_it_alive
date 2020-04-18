@@ -12,12 +12,12 @@ namespace KeepItAlive.Enemies
         [SerializeField]
         private float _health;
 
+        [SerializeField]
+        private GameObject _deathItemPrefab;
+
         public Sprite Sprite => _sprite;
 
         public float Health => _health;
-
-        [SerializeField]
-        private GameObject _deathItemPrefab;
         
         public Enemy(float initialHealth)
         {
