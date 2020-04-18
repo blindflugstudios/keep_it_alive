@@ -2,9 +2,9 @@
 using UnityEngine;
 using KeepItAlive.Shared;
 
-namespace KeepItAlive.Enemies
+namespace KeepItAlive.Player
 {
-    public class Enemy : MonoBehaviour, IEntity
+    public class Player : MonoBehaviour, IEntity
     {
         [SerializeField]
         private Sprite _sprite;
@@ -15,11 +15,8 @@ namespace KeepItAlive.Enemies
         public Sprite Sprite => _sprite;
 
         public float Health => _health;
-
-        [SerializeField]
-        private GameObject _deathItemPrefab;
         
-        public Enemy(float initialHealth)
+        public Player(float initialHealth)
         {
             _health = initialHealth;
         }
@@ -28,9 +25,6 @@ namespace KeepItAlive.Enemies
         {
             DeathAnimation();
             Destroy(gameObject);
-
-            //Turns into other object
-            Instantiate(_deathItemPrefab);
         }
 
         private void DeathAnimation()
