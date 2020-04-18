@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f2d580a16c5e141aa08f2472b97bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 8263053741403113939}
   _canvas: {fileID: 0}
+  _keyBinding: {fileID: 11400000, guid: 9d30539c803dc4d449bd2205bd153270, type: 2}
+  _player: {fileID: 8263053741403113939}
 --- !u!58 &7848439874684688960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,8 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
-  _health: 10
-  Inventory: {fileID: 0}
+  _health: 0
+  _environmentalDamageConfiguration: {fileID: 0}
+  Inventory: {fileID: 1737232178869905924}
 --- !u!114 &-688583960914528756
 MonoBehaviour:
   m_ObjectHideFlags: 0
