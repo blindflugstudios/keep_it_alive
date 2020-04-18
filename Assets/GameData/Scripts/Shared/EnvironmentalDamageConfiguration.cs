@@ -12,9 +12,9 @@ namespace KeepItAlive.Shared
         [SerializeField]
         private float _radiationDamagePerTick;
 
-        public float FreezeDamagePerTick;
+        public float FreezeDamagePerTick => _freezeDamagePerTick;
 
-        public float RadiationDamagePerTick;
+        public float RadiationDamagePerTick => _radiationDamagePerTick;
 
         private EnvironmentalDamageConfiguration _instance;
 
