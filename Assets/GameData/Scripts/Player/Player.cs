@@ -4,11 +4,9 @@ using KeepItAlive.Shared;
 
 namespace KeepItAlive.Player
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Player : MonoBehaviour, IEntity
     {
-        [SerializeField]
-        private Sprite _sprite;
-
         [SerializeField]
         private float _health;
 
@@ -16,8 +14,6 @@ namespace KeepItAlive.Player
         private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
 
         private DamageManager _damageManager;
-
-        public Sprite Sprite => _sprite;
 
         public float Health => _health;
         public PlayerInventory Inventory;
