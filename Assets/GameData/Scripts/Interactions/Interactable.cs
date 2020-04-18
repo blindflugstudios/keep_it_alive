@@ -2,7 +2,7 @@
 
 public interface IInteractable
 {
-    string InteractText { get; }
+    string InteractText(Player player);
     string NoInteractText { get; }
     void Interact(Player player, InteractionType interactionType);
     bool CanPlayerInteract(Player player);
