@@ -77,7 +77,6 @@ namespace KeepItAlive.Camera
 		{
 			_camera = GetComponent<UnityEngine.Camera>();
 			_cameraZ = transform.position.z;
-			PlayerMotor = _player;
 		}
 	}
 }
