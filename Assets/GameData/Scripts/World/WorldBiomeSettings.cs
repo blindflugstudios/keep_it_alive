@@ -10,6 +10,7 @@ namespace KeepItAlive.World
         [SerializeField] private float _size;
         [SerializeField] private Vector2 _strength;
         [SerializeField] private float _probability;
+        [SerializeField] private int _spawnCount;
         [SerializeField] private Color _color;
         [SerializeField] private WorldPrefab[] _worldPrefabs;
 
@@ -18,6 +19,7 @@ namespace KeepItAlive.World
         public float Probability => _probability;
         public Vector2 Strength => _strength;
         public Color Color => _color;
+        public int SpawnCount => _spawnCount;
         public WorldPrefab[] WorldPrefabs => _worldPrefabs;
     }
 }
