@@ -4,6 +4,7 @@ using KeepItAlive.Shared;
 
 namespace KeepItAlive.Enemies
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Enemy : MonoBehaviour, IEntity
     {
         [SerializeField]
@@ -11,7 +12,7 @@ namespace KeepItAlive.Enemies
 
         [SerializeField]
         private GameObject _deathItemPrefab;
-        
+
         public float Health => _health;
 
         public void Die()
