@@ -94,5 +94,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf64b936111d5689a1ef2f1b0dff8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
+  _health: 10
   _deathItemPrefab: {fileID: 0}
