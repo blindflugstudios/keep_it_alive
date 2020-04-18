@@ -8,6 +8,8 @@ namespace KeepItAlive.Characters
 		private const float SKIN_WIDTH = 0.1f;
 		
 		[SerializeField] private float _moveSpeed;
+		[Range(0f, 1f)]
+		[SerializeField] private float _depthMovementScale;
 		[SerializeField] private LayerMask _obstacleLayer;
 		
 		private BoxCollider2D _collider;
@@ -19,7 +21,7 @@ namespace KeepItAlive.Characters
 		
 		public void Move(float x, float y)
 		{
-			_currentVelocity = _moveSpeed * new Vector2(x, y);
+			_currentVelocity = _moveSpeed * new Vector2(x, y * _depthMovementScale);
 		}
 
 		private void Update()
@@ -84,12 +86,10 @@ namespace KeepItAlive.Characters
 			if (topCollisionDistance >= 0)
 			{
 				frameVelocity.y = topCollisionDistance;
-				_currentVelocity.y = 0f;
 			}
 			else if (bottomCollisionDistance >= 0)
 			{
 				frameVelocity.y = -bottomCollisionDistance;
-				_currentVelocity.y = 0f;
 			}
 
 			float leftCollisionDistance = GetMinCollisionDistance(4, 5);
@@ -97,12 +97,10 @@ namespace KeepItAlive.Characters
 			if (leftCollisionDistance >= 0)
 			{
 				frameVelocity.x = -leftCollisionDistance;
-				_currentVelocity.x = 0f;
 			}
 			else if (rightCollisionDistance >= 0)
 			{
 				frameVelocity.x = rightCollisionDistance;
-				_currentVelocity.x = 0f;
 			}
 		}
 
