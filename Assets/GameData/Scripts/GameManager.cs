@@ -1,7 +1,7 @@
 ﻿using KeepItAlive.World;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace KeepItAlive
 {
     public sealed class GameManager : MonoBehaviour
     {
