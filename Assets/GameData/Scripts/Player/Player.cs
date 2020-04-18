@@ -20,7 +20,8 @@ namespace KeepItAlive.Player
         public Sprite Sprite => _sprite;
 
         public float Health => _health;
-
+        public PlayerInventory Inventory;
+        
         public void Start()
         {
             _damageManager = new DamageManager(_environmentalDamageConfiguration);
