@@ -34,8 +34,11 @@ public class PlayerInventory : MonoBehaviour
     public void ConsumeHeldItem()
     {
         //update ui info about held item
-        Destroy((_currentItem as MonoBehaviour).gameObject);
-        _currentItem = null;
+        if(_currentItem != null)
+        {
+            Destroy((_currentItem as MonoBehaviour).gameObject);
+            _currentItem = null;
+        }
     }
 }
 
