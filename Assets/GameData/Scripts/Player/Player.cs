@@ -12,27 +12,23 @@ namespace KeepItAlive.Player
         [SerializeField]
         private float _health;
 
+        [SerializeField]
+        private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
+
+        private DamageManager _damageManager;
+
         public Sprite Sprite => _sprite;
 
         public float Health => _health;
 
-        public EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
-
         public void Update()
         {
+            _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   
+
             if(DieCondition())
             {
                 Die();
             }
-        }
-        public void Freeze()
-        {
-            _health -= _environmentalDamageConfiguration.FreezeDamagePerTick;
-        }
-
-        public void Radiate()
-        {
-            _health -= _environmentalDamageConfiguration.RadiationDamagePerTick;
         }
 
         public void Die()
