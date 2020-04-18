@@ -362,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893317574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 25, z: 0}
+  m_LocalPosition: {x: 30, y: 30, z: 0}
   m_LocalScale: {x: 8000, y: 8000, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -482,22 +482,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings:
     _worldSize: 50
-    _minDisToEnd: 2
+    _startPoint: {fileID: -4997946120153813590, guid: 8f9b6787150188d4a917644c185fe4c3,
+      type: 3}
+    _finishPoint: {fileID: 7600582996708696686, guid: f1d3003059ee5be408ca4b14f58f68d2,
+      type: 3}
     _biomeStickinessFactor: 0.1
     _biomeGridSize: 8
     _biomes:
     - _offset: {x: 3, y: 2}
       _size: 10
-      _strength: {x: 0, y: 0}
+      _strength: {x: 0.4, y: 0.6}
       _probability: 0.5
+      _spawnCount: 5
       _color: {r: 0, g: 1, b: 0.09392524, a: 1}
-      _worldPrefabs: []
+      _worldPrefabs:
+      - {fileID: 1312448644991080018, guid: 8c84f688a1d024848bcdb3d430ab5ebf, type: 3}
     - _offset: {x: 2, y: 4}
       _size: 12
-      _strength: {x: 0, y: 0}
+      _strength: {x: 0.5, y: 0.8}
       _probability: 0.5
+      _spawnCount: 5
       _color: {r: 1, g: 0, b: 0, a: 1}
-      _worldPrefabs: []
+      _worldPrefabs:
+      - {fileID: 1312448644991080018, guid: 020951627a3a101498b141953a771706, type: 3}
     _shards:
     - {fileID: -347466021665916017, guid: 7b763fefc07226d4d86548e3124f5ecd, type: 3}
     - {fileID: -347466021665916017, guid: da943ca000702324baeccaa5fb30088a, type: 3}

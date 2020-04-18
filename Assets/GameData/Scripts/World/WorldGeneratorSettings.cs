@@ -8,10 +8,12 @@ namespace KeepItAlive.World
     {
         [Header("General")]
         [SerializeField] private float _worldSize;
-        [SerializeField] private float _minDisToEnd;
+        [SerializeField] private StartPoint _startPoint;
+        [SerializeField] private FinishPoint _finishPoint;
 
         public float WorldSize => _worldSize;
-        public float MinDisToEnd => _minDisToEnd;
+        public StartPoint StartPoint => _startPoint;
+        public FinishPoint FinishPoint => _finishPoint;
 
         [Space] [Header("Biomes")] 
         [SerializeField] private float _biomeStickinessFactor;
