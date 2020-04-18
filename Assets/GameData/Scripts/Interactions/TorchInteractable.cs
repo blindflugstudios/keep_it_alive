@@ -50,8 +50,7 @@ public class TorchInteractable : MonoBehaviour, IInteractable
             {
                 player.Inventory.HasTorch = true;
                 transform.parent = player.transform;
-            }
-            
+            }            
         }
     }
 

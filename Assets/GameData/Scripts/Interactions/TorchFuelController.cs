@@ -26,9 +26,9 @@ public class TorchFuelController : MonoBehaviour
     {
         if(Time.time >= nextUpdate)
         {
-            nextUpdate = Mathf.FloorToInt(Time.time)+1;
             AddFuel(-_fuelConfiguration.FuelReductionPerTick);
             AdjustSize();
+            nextUpdate = Mathf.FloorToInt(Time.time)+1;
         }
     }
 

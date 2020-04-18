@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3142d1309c128ecffbdfa0ce45046877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fuelConfiguration: {fileID: 0}
+  _fuelConfiguration: {fileID: 1633298053}
 --- !u!212 &981699588
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -704,6 +704,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8152764857744378056}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1633298053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1001590348141876008, guid: fcf7eafa81f4aea4d93135e825255f16,
+    type: 3}
+  m_PrefabInstance: {fileID: 8152764857744378056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a06d0053a153b0a88c0494c65f4ed5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1980628883
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,12 +974,12 @@ PrefabInstance:
     - target: {fileID: 1001590348141876008, guid: fcf7eafa81f4aea4d93135e825255f16,
         type: 3}
       propertyPath: _initialFuel
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1001590348141876008, guid: fcf7eafa81f4aea4d93135e825255f16,
         type: 3}
       propertyPath: _fuelReductionPerTick
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8152764856122895947, guid: fcf7eafa81f4aea4d93135e825255f16,
         type: 3}

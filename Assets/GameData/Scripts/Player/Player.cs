@@ -15,7 +15,10 @@ namespace KeepItAlive.Player
 
         private DamageManager _damageManager;
 
+        private float nextUpdate = 1.0f;
+
         public float Health => _health;
+
         public PlayerInventory Inventory;
         
         public void Start()
@@ -25,7 +28,12 @@ namespace KeepItAlive.Player
 
         public void Update()
         {
-            _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   
+            //Apply Environment effects every second
+            if(Time.time >= nextUpdate)
+            {
+                _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   
+                nextUpdate = Mathf.FloorToInt(Time.time)+1;
+            }
 
             if(DieCondition())
             {
