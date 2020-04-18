@@ -15,19 +15,5 @@ namespace KeepItAlive.Shared
         public float FreezeDamagePerTick => _freezeDamagePerTick;
 
         public float RadiationDamagePerTick => _radiationDamagePerTick;
-
-        private EnvironmentalDamageConfiguration _instance;
-
-        private void Awake()
-        {
-            // if the singleton hasn't been initialized yet
-            if (_instance != null && _instance != this) 
-            {
-                Destroy(gameObject);
-            }
-    
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
     }
 }
