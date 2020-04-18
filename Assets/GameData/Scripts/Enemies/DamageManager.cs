@@ -9,7 +9,7 @@ namespace KeepItAlive.Enemies
             return health;
         }
 
-        public float Hit(float health)
+        private float Hit(float health)
         {
             return health - 5;
         }
