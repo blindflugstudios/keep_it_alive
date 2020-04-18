@@ -5,7 +5,10 @@ namespace KeepItAlive.Characters
 	[RequireComponent(typeof(BoxCollider2D))]
 	public class CharacterMotor : MonoBehaviour
 	{
+		private const float SKIN_WIDTH = 0.1f;
+		
 		[SerializeField] private float _moveSpeed;
+		[SerializeField] private LayerMask _obstacleLayer;
 		
 		private BoxCollider2D _collider;
 		private Transform _transform;
@@ -32,9 +35,9 @@ namespace KeepItAlive.Characters
 			MakeRaycasts(frameVelocity);
 			ResolveCollisions(ref frameVelocity);
 
-			_transform.Translate(frameVelocity.x, 0f, frameVelocity.y);
+			_transform.Translate(frameVelocity.x, frameVelocity.y, 0f);
 		}
-
+		
 		private void MakeRaycasts(Vector2 frameVelocity)
 		{
 			for (int i = 0; i < _hits.Length; i++)
@@ -78,39 +81,44 @@ namespace KeepItAlive.Characters
 		{
 			float topCollisionDistance = GetMinCollisionDistance(0, 1);
 			float bottomCollisionDistance = GetMinCollisionDistance(2, 3);
-			if (topCollisionDistance > 0)
+			if (topCollisionDistance >= 0)
 			{
 				frameVelocity.y = topCollisionDistance;
+				_currentVelocity.y = 0f;
 			}
-			else if (bottomCollisionDistance > 0)
+			else if (bottomCollisionDistance >= 0)
 			{
 				frameVelocity.y = -bottomCollisionDistance;
+				_currentVelocity.y = 0f;
 			}
 
 			float leftCollisionDistance = GetMinCollisionDistance(4, 5);
 			float rightCollisionDistance = GetMinCollisionDistance(6, 7);
-			if (leftCollisionDistance > 0)
+			if (leftCollisionDistance >= 0)
 			{
 				frameVelocity.x = -leftCollisionDistance;
+				_currentVelocity.x = 0f;
 			}
-			else if (rightCollisionDistance > 0)
+			else if (rightCollisionDistance >= 0)
 			{
 				frameVelocity.x = rightCollisionDistance;
+				_currentVelocity.x = 0f;
 			}
 		}
 
 		private float GetMinCollisionDistance(int hitIndex1, int hitIndex2)
 		{
-			float distance1 = _hits[hitIndex1].collider != null ? _hits[hitIndex1].distance : 0f;
-			float distance2 = _hits[hitIndex2].collider != null ? _hits[hitIndex2].distance : 0f;
-			return Mathf.Min(distance1, distance2);
+			float distance1 = _hits[hitIndex1].collider != null ? Mathf.Max(_hits[hitIndex1].distance - SKIN_WIDTH, 0f) : -1f;
+			float distance2 = _hits[hitIndex2].collider != null ? Mathf.Max(_hits[hitIndex2].distance - SKIN_WIDTH, 0f) : -1f;
+			
+			return distance1 * distance2 <= 0 ? Mathf.Max(distance1, distance2) : Mathf.Min(distance1, distance2);
 		}
 
 		private void UpdateRaycastOrigins()
 		{
 			Vector3 position = _transform.position;
 			Vector2 center = new Vector2(position.x, position.y) + _collider.offset;
-			Vector2 size = _collider.size;
+			Vector2 size = _collider.size * 0.5f - SKIN_WIDTH * Vector2.one;
 			_raycastOrigins[0] = center + new Vector2(-size.x, size.y);
 			_raycastOrigins[1] = center + new Vector2(size.x, size.y);
 			_raycastOrigins[2] = center + new Vector2(size.x, -size.y);
@@ -119,9 +127,8 @@ namespace KeepItAlive.Characters
 
 		private RaycastHit2D Raycast(Vector2 direction, int originIndex)
 		{
-			var ray = new Ray2D(_raycastOrigins[originIndex], direction);
-			Debug.DrawRay(ray.origin, direction);
-			return Physics2D.Raycast(_raycastOrigins[originIndex], direction, direction.magnitude);
+			Debug.DrawRay(_raycastOrigins[originIndex], (direction.magnitude + SKIN_WIDTH) * direction.normalized, Color.red);
+			return Physics2D.Raycast(_raycastOrigins[originIndex], direction.normalized, direction.magnitude + SKIN_WIDTH, _obstacleLayer);
 		}
 		
 		private void Awake()
