@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf64b936111d5689a1ef2f1b0dff8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 40
   _deathItemPrefab: {fileID: 6299535870232168253, guid: 5ef71fda24c3a37498dbd1dc61a6f653,
     type: 3}
   _animator: {fileID: 2707988059576211127}
@@ -677,7 +677,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualPrefab: {fileID: 6735499291105335882, guid: 4d8f43f39f9a9e142afbb50a2475946d,
     type: 3}
-  _attackCooldown: 3
+  _attackCooldown: 1.5
   _attackDistance: 3
 --- !u!114 &-8951170496200147687
 MonoBehaviour:
