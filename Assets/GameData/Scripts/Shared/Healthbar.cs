@@ -6,9 +6,6 @@ namespace KeepItAlive.Shared
     {
         private const string DecimalFormat = "0.00";
 
-        [SerializeField] 
-        private HealthbarWorldUI _playerCanvas;
-
         [SerializeField]
         private GameObject _entity;
 
