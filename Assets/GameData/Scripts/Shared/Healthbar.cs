@@ -21,9 +21,25 @@ namespace KeepItAlive.Shared
 
         private void Update() 
         {
-            if(_entity != null && Entity.Health > 0)
+            if(_entity != null && Entity != null)
             {
-                _playerCanvas.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth} / {Entity.Health}", Color.black);
+                if(Entity.Health > 0)
+                {
+                    _playerCanvas.PlayerHealthLabelPrefab.SetAnchor(transform);
+                    _playerCanvas.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth} / {Entity.Health}", Color.black);
+                }
+
+                if(Entity.ReceivesFreezeDamage)
+                {
+                    _playerCanvas.PlayerFreezeDamageLabelPrefab.SetAnchor(transform);
+                    _playerCanvas.PlayerFreezeDamageLabelPrefab.DisplayText("Receiving Freeze Damage!", Color.black);
+                }
+
+                if(Entity.ReceivesRadiationDamage)
+                {
+                    _playerCanvas.PlayerRadiationDamageLabelPrefab.SetAnchor(transform);
+                    _playerCanvas.PlayerRadiationDamageLabelPrefab.DisplayText("Receiving Radiation Damage!", Color.black);
+                }
             }
         }
     }

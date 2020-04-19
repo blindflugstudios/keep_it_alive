@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6739112595084249606}
   - component: {fileID: 5076673305877981255}
   - component: {fileID: 136094789603893501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sheet01_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.28}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,16 +108,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.8749614, y: -1.635432}
-      - {x: 0.011981964, y: -1.7792058}
-      - {x: 0.75589466, y: -1.7200975}
-      - {x: 1.1629, y: -1.2740581}
-      - {x: 0.91000175, y: -0.88670576}
-      - {x: 0.5797825, y: -0.70590436}
-      - {x: -0.14936733, y: -0.5947551}
-      - {x: -0.7785897, y: -0.7608545}
-      - {x: -1.0751362, y: -1.013617}
-      - {x: -1.2020197, y: -1.2312106}
+    - - {x: -0.6985625, y: -1.3307436}
+      - {x: -0.06819931, y: -1.4905534}
+      - {x: 0.29886186, y: -1.5276626}
+      - {x: 0.6497403, y: -1.3141488}
+      - {x: 0.5892761, y: -1.1112131}
+      - {x: 0.39536613, y: -0.92239356}
+      - {x: -0.069186054, y: -0.8433169}
+      - {x: -0.44984686, y: -0.8731082}
+      - {x: -0.67423016, y: -0.94947207}
+      - {x: -0.8171499, y: -1.0708482}
 --- !u!1 &6415198947954941613
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 895281796493834524}
   - component: {fileID: -7495692768812201532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree06
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9102123840488894758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wallCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3439536630875849276}
   - component: {fileID: 3769060017723383933}
   - component: {fileID: 8381847565933806949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sheet01_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

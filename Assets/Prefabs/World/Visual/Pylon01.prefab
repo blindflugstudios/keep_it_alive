@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5570288726676535136}
   - component: {fileID: 6005617381620093847}
   - component: {fileID: 2318758432862785552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sheet01_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3242329094313390954}
   - component: {fileID: -617925648030745411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pylon01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

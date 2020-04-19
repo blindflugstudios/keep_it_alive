@@ -3,7 +3,7 @@ using KeepItAlive.Characters;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Pathfinding : MonoBehaviour
+public class EnemyLogic : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private float _jumpDistance;
@@ -12,6 +12,7 @@ public class Pathfinding : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Transform _target;
     [SerializeField] private CharacterAnimator _animator;
+    [SerializeField] private Attacker _attacker;
     private Transform _visual;
     public bool ShouldNavigate;
     
@@ -32,7 +33,21 @@ public class Pathfinding : MonoBehaviour
             var visualScale = _visual.localScale;
             visualScale.x = Mathf.Abs(visualScale.x) * -Mathf.Sign(_target.position.x - transform.position.x);
             _visual.localScale = visualScale;
+            if (_attacker.Attack(_target))
+            {
+                _animator.SetAttack();
+                StartCoroutine(DelayMovement(0.4f));
+            }
         }
+    }
+
+    private IEnumerator DelayMovement(float seconds)
+    {
+        ShouldNavigate = false;
+        _agent.isStopped = true;
+        yield return new WaitForSeconds(seconds);
+        _agent.isStopped = false;
+        ShouldNavigate = true;
     }
 
     private IEnumerator DodgeRoutine()
@@ -40,7 +55,7 @@ public class Pathfinding : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(_jumpFrequency.x, _jumpFrequency.y));
-            if (ShouldNavigate)
+            if (ShouldNavigate && _target!= null)
             {
                 var dist = Vector2.Distance(transform.position, _target.position);
                 var hit = Physics2D.Raycast(transform.position, (_target.position - transform.position).normalized,
@@ -80,7 +95,6 @@ public class Pathfinding : MonoBehaviour
         {
             timeElapsed += Time.deltaTime;
             var desiredPos = Vector3.Lerp(startPos, endPos, timeElapsed / jumpTime);
-
             _agent.Warp(desiredPos);
             yield return null;
         }
