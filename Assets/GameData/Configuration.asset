@@ -15,4 +15,4 @@ MonoBehaviour:
   _freezeDamagePerTick: 1
   _radiationDamagePerTick: 0.1
   _initialFuel: 100
-  _fuelReductionPerTick: 1
+  _fuelReductionPerTick: 0.4

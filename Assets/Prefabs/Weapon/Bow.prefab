@@ -47,5 +47,5 @@ MonoBehaviour:
   _Inventory: {fileID: 0}
   arrowPrefab: {fileID: 7525651529247863540, guid: 895140bfa2fca4f7f8cd59dc0dec8a02,
     type: 3}
-  arrowSpeed: 60
+  arrowSpeed: 200
   coolDownTime: 0.5

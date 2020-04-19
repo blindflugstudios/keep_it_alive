@@ -66,7 +66,7 @@ MonoBehaviour:
       _prefabSettings:
       - _prefab: {fileID: -7273945041619649083, guid: ebe86540c71c04e4a8ca361a2ed29b85,
           type: 3}
-        _probability: 0.05
+        _probability: 0.3
       - _prefab: {fileID: -6004772924186567597, guid: e63b77224ca7d3e4693533e1ffafb02d,
           type: 3}
         _probability: 0.2
@@ -115,7 +115,7 @@ MonoBehaviour:
         _probability: 0.4
       - _prefab: {fileID: 4161239886333554087, guid: 3eb51e7414071df46941cd9f557bf6f8,
           type: 3}
-        _probability: 0.05
+        _probability: 0.1
       - _prefab: {fileID: 8509790925360649519, guid: 4bcda81e4958db94f9ee1b54412be452,
           type: 3}
         _probability: 0.3
@@ -136,7 +136,7 @@ MonoBehaviour:
         _probability: 0.2
       - _prefab: {fileID: 4424899195483591423, guid: 156bf7c304a46594595c222cc15ff9d7,
           type: 3}
-        _probability: 0.05
+        _probability: 0.15
       - _prefab: {fileID: 3808605339295586196, guid: db7536e5f5fadb34b86560b5c734d18b,
           type: 3}
         _probability: 0.1
@@ -152,28 +152,28 @@ MonoBehaviour:
       _prefabSettings:
       - _prefab: {fileID: 2470754341082552150, guid: d1df4f419436b8b4886ee126ec892af5,
           type: 3}
-        _probability: 0.1
+        _probability: 0.15
       - _prefab: {fileID: 4161239886333554087, guid: 3eb51e7414071df46941cd9f557bf6f8,
           type: 3}
-        _probability: 0.1
+        _probability: 0.15
       - _prefab: {fileID: -617925648030745411, guid: af1b8f22310287943b9f771970d2395b,
           type: 3}
-        _probability: 0.5
+        _probability: 0.3
       - _prefab: {fileID: 3786606225207017007, guid: 2e9736ae3acfa1b4e8c6acf4ea837825,
           type: 3}
-        _probability: 0.5
+        _probability: 0.3
       - _prefab: {fileID: -4379896783504883141, guid: b8ed3e2c34c018646a6fc128de42c01b,
           type: 3}
         _probability: 0.4
       - _prefab: {fileID: 7698769264083791796, guid: 86e4f2bf784d0dc4a93d8e998b65c8aa,
           type: 3}
-        _probability: 0.4
+        _probability: 0.2
       - _prefab: {fileID: 5257383383886219576, guid: 69c2916168966d443a41090e5fd3d4a6,
           type: 3}
         _probability: 0.2
       - _prefab: {fileID: 6692274909324723205, guid: c2cfbde4e2115cc4090cc7c75e7a73fe,
           type: 3}
-        _probability: 0.3
+        _probability: 0.1
       - _prefab: {fileID: 1277195315886144224, guid: 88dd8301f1d47e64f98f1da5fae5a7dc,
           type: 3}
         _probability: 0.3
