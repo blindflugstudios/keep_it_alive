@@ -20,6 +20,10 @@ namespace KeepItAlive
 
 		private void SpawnPlayer(Vector3 position)
 		{
+			if (_player != null)
+			{
+				_player.Dead -= OnPlayerDead;
+			}
 			_player = Instantiate(_playerPrefabs[Random.Range(0, _playerPrefabs.Length)], position, Quaternion.identity);
 			_player.Dead += OnPlayerDead;
 			_camera.PlayerMotor = _player.GetComponent<CharacterMotor>();
