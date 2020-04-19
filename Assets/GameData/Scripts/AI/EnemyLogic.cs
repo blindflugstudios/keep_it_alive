@@ -10,7 +10,7 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField] private Vector2 _jumpFrequency;
     [SerializeField] private float _jumpTime;
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private Transform _target;
+    [SerializeField] public Transform Target;
     [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private Attacker _attacker;
     private Transform _visual;
@@ -25,15 +25,15 @@ public class EnemyLogic : MonoBehaviour
 
     private void Update()
     {
-        var shouldMove = ShouldNavigate && _target != null;
+        var shouldMove = ShouldNavigate && Target != null;
         _animator.SetMove(shouldMove);
         if (shouldMove)
         {
-            _agent.SetDestination(_target.position);
+            _agent.SetDestination(Target.position);
             var visualScale = _visual.localScale;
-            visualScale.x = Mathf.Abs(visualScale.x) * -Mathf.Sign(_target.position.x - transform.position.x);
+            visualScale.x = Mathf.Abs(visualScale.x) * -Mathf.Sign(Target.position.x - transform.position.x);
             _visual.localScale = visualScale;
-            if (_attacker.Attack(_target))
+            if (_attacker.Attack(Target))
             {
                 _animator.SetAttack();
                 StartCoroutine(DelayMovement(0.4f));
@@ -55,16 +55,16 @@ public class EnemyLogic : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(_jumpFrequency.x, _jumpFrequency.y));
-            if (ShouldNavigate && _target!= null)
+            if (ShouldNavigate && Target!= null)
             {
-                var dist = Vector2.Distance(transform.position, _target.position);
-                var hit = Physics2D.Raycast(transform.position, (_target.position - transform.position).normalized,
+                var dist = Vector2.Distance(transform.position, Target.position);
+                var hit = Physics2D.Raycast(transform.position, (Target.position - transform.position).normalized,
                     dist, _layerMask.value);
 
                 if (hit.collider == null)
                 {
                     var lookRotation = (_agent.steeringTarget - transform.position).normalized;
-                    var dot = Vector3.Dot(lookRotation, (_target.position - transform.position).normalized);
+                    var dot = Vector3.Dot(lookRotation, (Target.position - transform.position).normalized);
                     if (dot > 0.5f)
                     {
                         ShouldNavigate = false;
@@ -80,9 +80,9 @@ public class EnemyLogic : MonoBehaviour
     {
         var timeElapsed = 0f;
         var startPos = transform.position;
-        var dirToEnemy = (_target.position - transform.position).normalized;
+        var dirToEnemy = (Target.position - transform.position).normalized;
         var endPos = startPos + (Random.value > 0.5f ? -1f : 1f) * _jumpDistance *Vector3.Cross(Vector3.back, dirToEnemy);
-        endPos += 2f * _jumpDistance*(_target.position - transform.position).normalized;
+        endPos += 2f * _jumpDistance*(Target.position - transform.position).normalized;
         var dir = (endPos - startPos).normalized;
         var dist = Vector3.Distance(startPos, endPos);
         var hit = Physics2D.Raycast(startPos, dir, dist, _layerMask.value);
