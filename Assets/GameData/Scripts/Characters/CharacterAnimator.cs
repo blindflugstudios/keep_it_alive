@@ -26,6 +26,11 @@ namespace KeepItAlive.Characters
 		{
 			_animator.SetTrigger(_deathHash);
 		}
+		
+		public void TriggerDash()
+		{
+			_animator.SetTrigger("Dash");
+		}
 
 		public void TriggerDamage()
 		{

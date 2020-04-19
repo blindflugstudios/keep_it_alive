@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b7d64e487140f3ac230b8b6790a79c, type: 3}
   m_Name: Configuration
   m_EditorClassIdentifier: 
-  _freezeDamagePerTick: 10
-  _radiationDamagePerTick: 10
+  _freezeDamagePerTick: 1
+  _radiationDamagePerTick: 0.1
   _initialFuel: 100
   _fuelReductionPerTick: 1
