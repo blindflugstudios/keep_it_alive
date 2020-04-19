@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InteractableManager : MonoBehaviour
 {
-    [SerializeField] private WorldSpaceUi _canvas;
     private List<InteractableData> _interactablesInRange = new List<InteractableData>();
     [SerializeField] private KeyBinding _keyBinding;
     [SerializeField] private Player _player;
@@ -45,7 +44,7 @@ public class InteractableManager : MonoBehaviour
             var interactable = col.GetComponent<IInteractable>();
             if (interactable != null && _interactablesInRange.Any(i => i.Interactable == interactable) == false)
             {
-                var interactionData = new InteractableData(interactable, _canvas.GetLabel(), _player);
+                var interactionData = new InteractableData(interactable, WorldSpaceUi.Instance.GetLabel(), _player);
                 _interactablesInRange.Add(interactionData);
             }
         }
