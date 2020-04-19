@@ -108,16 +108,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.8749614, y: -1.635432}
-      - {x: 0.011981964, y: -1.7792058}
-      - {x: 0.75589466, y: -1.7200975}
-      - {x: 1.1629, y: -1.2740581}
-      - {x: 0.91000175, y: -0.88670576}
-      - {x: 0.5797825, y: -0.70590436}
-      - {x: -0.14936733, y: -0.5947551}
-      - {x: -0.7785897, y: -0.7608545}
-      - {x: -1.0751362, y: -1.013617}
-      - {x: -1.2020197, y: -1.2312106}
+    - - {x: 0.39, y: 0.13499999}
+      - {x: 0.39, y: 0.175}
+      - {x: -0.35999998, y: 0.205}
+      - {x: -0.35999998, y: 0.145}
+      - {x: -0.32, y: -0.005}
+      - {x: -0.21, y: -0.175}
+      - {x: 0.14999999, y: -0.175}
 --- !u!1 &4460804736144020821
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2492568211457405666}
+  - component: {fileID: 4161239886333554087}
   m_Layer: 0
   m_Name: Interact_BatteryT2
   m_TagString: Untagged
@@ -142,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4460804736144020821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.59, y: 1.82, z: -12.700001}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 540996929417493927}
@@ -150,6 +148,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4161239886333554087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460804736144020821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b691fdee278a47c2ad690ff5649b7fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 3617694602990935414}
 --- !u!1 &7154332307797503083
 GameObject:
   m_ObjectHideFlags: 0

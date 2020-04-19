@@ -56,15 +56,13 @@ namespace KeepItAlive.Enemies
         {
             if (other.CompareTag(Tags.ArrowTag))
             {
-             				return;
+                float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+                if (remainingHealth < _health)
+                {
+                    _animator?.TriggerDamage();
+                }
+                _health = remainingHealth;
             }
-
-            float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
-            if (remainingHealth < _health)
-            {
-              _animator?.TriggerDamage();
-            }
-            _health = remainingHealth;
         }
     }
 }
