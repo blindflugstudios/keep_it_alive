@@ -109,5 +109,18 @@ namespace KeepItAlive.Player
             //TODO: Discuss and probably more to come
             return _health < 0.0f;
         }
+
+        private void OnGUI() 
+        {
+            if(_damageManager.ReceivesFreezeDamage)
+            {
+                GUI.Box(new Rect(700, 50, 200, 20), "Receiving Freeze Damage!");
+            }
+
+            if(_damageManager.ReceivesRadiationDamage)
+            {
+                GUI.Box(new Rect(700, 80, 200, 20), "Receiving Radiation Damage!");
+            }
+        } 
 	}
 }
