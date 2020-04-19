@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6627234499512829589}
   - component: {fileID: 2470754341082552150}
+  - component: {fileID: -7639328523289250771}
   m_Layer: 0
   m_Name: Interact_BatteryT1
   m_TagString: Untagged
@@ -45,6 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 6620633804407623677}
+--- !u!114 &-7639328523289250771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112183776377866359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6277940d44264f4d97c99c2c845442de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8122715249173860727
 GameObject:
   m_ObjectHideFlags: 0

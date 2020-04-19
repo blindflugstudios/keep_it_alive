@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2019712699478828140}
   - component: {fileID: -7273945041619649083}
+  - component: {fileID: 1998147377151572336}
   m_Layer: 0
   m_Name: Interact_Wood
   m_TagString: Untagged
@@ -45,6 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 6074007745189326792}
+--- !u!114 &1998147377151572336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604449583162173670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6277940d44264f4d97c99c2c845442de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8150494046653193995
 GameObject:
   m_ObjectHideFlags: 0

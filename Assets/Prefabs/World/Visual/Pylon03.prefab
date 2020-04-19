@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692609708951154660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 986106178826229736}
@@ -123,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986106178826229736}
   - component: {fileID: 8509790925360649519}
+  - component: {fileID: -450774709864847833}
   m_Layer: 8
   m_Name: Pylon03
   m_TagString: Untagged
@@ -158,3 +159,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 3799998746521040634}
+--- !u!114 &-450774709864847833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292414224983946311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6277940d44264f4d97c99c2c845442de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

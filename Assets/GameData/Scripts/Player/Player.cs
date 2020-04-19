@@ -19,7 +19,7 @@ namespace KeepItAlive.Player
 		[SerializeField] private float _deathAnimationTime;
 
         [SerializeField]
-        private PlayerWorldSpaceUI _playerCanvas;
+        private HealthbarWorldUI _playerCanvas;
 
 		public event Action Dead;
 
