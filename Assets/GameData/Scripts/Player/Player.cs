@@ -18,6 +18,9 @@ namespace KeepItAlive.Player
 		[SerializeField] private CharacterAnimator _animator;
 		[SerializeField] private float _deathAnimationTime;
 
+        [SerializeField]
+        private PlayerWorldSpaceUI _playerCanvas;
+
 		public event Action Dead;
 
         private DamageManager _damageManager;
@@ -71,6 +74,16 @@ namespace KeepItAlive.Player
             if(DieCondition())
             {
                 Die();
+            }
+
+            if(_damageManager.ReceivesFreezeDamage)
+            {
+                _playerCanvas.PlayerFreezeDamageLabelPrefab.DisplayText("Receiving Freeze Damage!", Color.black);
+            }
+
+            if(_damageManager.ReceivesRadiationDamage)
+            {
+                _playerCanvas.PlayerRadiationDamageLabelPrefab.DisplayText("Receiving Radiation Damage!", Color.black);
             }
         }
 
@@ -131,20 +144,5 @@ namespace KeepItAlive.Player
             //TODO: Discuss and probably more to come
             return _health < 0.0f;
         }
-
-        private void OnGUI() 
-        {
-            GUI.contentColor = Color.black;
-
-            if(_damageManager.ReceivesFreezeDamage)
-            {
-                GUI.Box(new Rect(700, 50, 200, 20), "Receiving Freeze Damage!");
-            }
-
-            if(_damageManager.ReceivesRadiationDamage)
-            {
-                GUI.Box(new Rect(700, 80, 200, 20), "Receiving Radiation Damage!");
-            }
-        } 
 	}
 }
