@@ -53,7 +53,7 @@ namespace KeepItAlive.Enemies
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Arrow"))
+            if (other.CompareTag(Tags.ArrowTag))
             {
                 _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);
             }

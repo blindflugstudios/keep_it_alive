@@ -20,6 +20,7 @@ namespace KeepItAlive.Player
 		public event Action Dead;
 
         private DamageManager _damageManager;
+        
 		private PlayerInput _input;
 
         private float nextUpdate = 1.0f;
@@ -31,6 +32,9 @@ namespace KeepItAlive.Player
         public void Start()
         {
             _damageManager = new DamageManager(_environmentalDamageConfiguration);
+            _damageManager.ReceivesFreezeDamage = true;
+            _damageManager.ReceivesRadiationDamage = true;
+
 			_input = GetComponent<PlayerInput>();
 			_input.enabled = false;
 			_input.enabled = true;
@@ -48,6 +52,14 @@ namespace KeepItAlive.Player
             if(DieCondition())
             {
                 Die();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag(Tags.EnemyTag))
+            {
+                _health = _damageManager.ApplyEnemyDamageReturnRemainingHealth(_health);
             }
         }
 
