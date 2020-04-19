@@ -1,5 +1,4 @@
 ﻿using KeepItAlive.Characters;
-using System;
 using UnityEngine;
 using KeepItAlive.Shared;
 using System.Collections;
@@ -57,15 +56,13 @@ namespace KeepItAlive.Enemies
         {
             if (other.CompareTag(Tags.ArrowTag))
             {
-                return;
+                float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+                if (remainingHealth < _health)
+                {
+                    _animator?.TriggerDamage();
+                }
+                _health = remainingHealth;
             }
-
-            float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
-            if (remainingHealth < _health)
-            {
-              _animator?.TriggerDamage();
-            }
-            _health = remainingHealth;
         }
     }
 }

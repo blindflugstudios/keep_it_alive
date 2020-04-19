@@ -34,18 +34,20 @@ namespace KeepItAlive.World
             Instance = this;
         }
 
-        public void Generate()
+        public SpawnInfo Generate()
         {
             _spawnedBiomes.Clear();
             _spawnedShards.Clear();
             _spawnedWorldObjects.Clear();
-            
+
             SpawnBiomes();
-            SpawnShards();
-            StartCoroutine(SpawnPrefabsRoutine());
+            SpawnInfo spawnInfo = SpawnShards();
+			StartCoroutine(SpawnWorld());
+
+			return spawnInfo;
         }
 
-        private IEnumerator SpawnPrefabsRoutine()
+        private IEnumerator SpawnWorld()
         {
             yield return null;
             SpawnPrefabs();
@@ -110,8 +112,9 @@ namespace KeepItAlive.World
             return -1;
         }
 
-        private void SpawnShards()
+        private SpawnInfo SpawnShards()
         {
+			var spawnInfo = new SpawnInfo();
             var shardsToSpawn = _settings.Shards.ToList();
             shardsToSpawn.AddRange(new[]
                 {_settings.StartPoint.GetComponent<WorldShard>(), _settings.FinishPoint.GetComponent<WorldShard>()});
@@ -126,7 +129,16 @@ namespace KeepItAlive.World
                 var spawnedShard = Instantiate(shard.gameObject);
                 var shardComponent = spawnedShard.GetComponent<WorldShard>();
 
-                var shardRect = shardComponent.Box;
+				if (spawnedShard.TryGetComponent(out StartPoint startPoint))
+				{
+					spawnInfo.StartPoint = startPoint;
+				}
+				else if (spawnedShard.TryGetComponent(out FinishPoint finishPoint))
+				{
+					spawnInfo.FinishPoint = finishPoint;
+				}
+
+				var shardRect = shardComponent.Box;
                 var shardSize = shardRect.size;
                 var shardMaxSize = Mathf.Min(Mathf.Max(shardSize.x, shardSize.y) + cellSize / 4.0f, cellSize);
 
@@ -137,7 +149,9 @@ namespace KeepItAlive.World
                 spawnedShard.transform.position = new Vector3(posX, posY, .0f);
                 _spawnedShards.Add(spawnedShard.GetComponent<WorldShard>());
             }
-        }
+
+			return spawnInfo;
+		}
         
         private void SpawnPrefabs()
         {
@@ -170,7 +184,9 @@ namespace KeepItAlive.World
 
                     var pos = (biome.Position - new Vector2(biome.Size, biome.Size) / 2.0f) + new Vector2(biome.Size * Random.value, biome.Size * Random.value);
                     var collisionBounds = worldObject.Bounds;
-                    collisionBounds.center += new Vector3(pos.x, pos.y, .0f);
+                    var center = collisionBounds.center + new Vector3(pos.x, pos.y, .0f);
+                    center.z = .0f;
+                    collisionBounds.center = center;
                     if (CheckForCollision(collisionBounds, biome, nearbyBiomes, biomeObjects) == false)
                     {
                         worldObject.transform.position = pos;
@@ -229,9 +245,8 @@ namespace KeepItAlive.World
                     return true;
                 }
             }
-            
-            //shard collision
-            if (Physics2D.OverlapBox(collisionBounds.center, collisionBounds.size, .0f) != null)
+
+            if (Physics2D.OverlapBox(collisionBounds.center, collisionBounds.size, .0f))
             {
                 return true;
             }
@@ -240,7 +255,9 @@ namespace KeepItAlive.World
             for (var i = 0; i < biomeObjects.Count; i++)
             {
                 var objectBounds = biomeObjects[i].Bounds;
-                objectBounds.center += new Vector3(biomeObjects[i].transform.position.x, biomeObjects[i].transform.position.y, .0f);
+                var center = objectBounds.center + new Vector3(biomeObjects[i].transform.position.x, biomeObjects[i].transform.position.y, .0f);
+                center.z = .0f;
+                objectBounds.center = center;
                 if (objectBounds.Overlap(collisionBounds))
                 {
                     return true;
@@ -248,10 +265,20 @@ namespace KeepItAlive.World
             }
             return false;
         }
+		
+		public struct SpawnInfo
+		{
+			public StartPoint StartPoint { get; set; }
+			public FinishPoint FinishPoint { get; set; }
+		}
 
 #if UNITY_EDITOR
         public void OnDrawGizmosSelected()
         {
+            Gizmos.color = Color.black;
+            var worldSize = new Vector3(_settings.WorldSize, _settings.WorldSize, .1f);
+            Gizmos.DrawWireCube(transform.position + worldSize / 2.0f, worldSize);
+
             var color = UnityEditor.Handles.color;
             if (_debugBiomes)
             {
@@ -261,13 +288,14 @@ namespace KeepItAlive.World
                     UnityEditor.Handles.DrawWireCube(_spawnedBiomes[i].Position, new Vector3(_spawnedBiomes[i].Size, _spawnedBiomes[i].Size, 0.02f));
                 }
             }
-            UnityEditor.Handles.color = color;
-            
+
+            UnityEditor.Handles.color = Color.magenta;
             for (var i = 0; i < _spawnedWorldObjects.Count; i++)
             {
                 var spawnedWorldObject = _spawnedWorldObjects[i];
                 UnityEditor.Handles.DrawWireCube(spawnedWorldObject.Bounds.center, spawnedWorldObject.Bounds.size);
             }
+            UnityEditor.Handles.color = color;
         }
         #endif
     }

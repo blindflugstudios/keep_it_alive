@@ -30,8 +30,19 @@ namespace KeepItAlive.Player
         public float Health => _health;
 
         public PlayerInventory Inventory;
-        
-        public void Start()
+
+		public void OnDestinationReached()
+		{
+			_input.enabled = false;
+		}
+
+		[ContextMenu("Die")]
+		public void Die()
+		{
+			StartCoroutine(DeathCoroutine());
+		}
+
+		private void Start()
         {
             _damageManager = new DamageManager(_environmentalDamageConfiguration);
             _damageManager.ReceivesFreezeDamage = true;
@@ -42,7 +53,7 @@ namespace KeepItAlive.Player
 			_input.enabled = true;
 		}
 
-        public void Update()
+		private void Update()
         {
             //Apply Environment effects every second
             if(Time.time >= nextUpdate)
@@ -62,19 +73,13 @@ namespace KeepItAlive.Player
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+		private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(Tags.EnemyTag))
             {
                 _health = _damageManager.ApplyEnemyDamageReturnRemainingHealth(_health);
             }
         }
-
-		[ContextMenu("Die")]
-        public void Die()
-		{
-			StartCoroutine(DeathCoroutine());
-		}
 
 		private IEnumerator DeathCoroutine()
 		{
