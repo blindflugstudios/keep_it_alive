@@ -4,6 +4,9 @@ namespace KeepItAlive.Shared
 {
     public class Healthbar : MonoBehaviour
     {
+        [SerializeField] 
+        private PlayerWorldSpaceUI _playerCanvas;
+
         [SerializeField]
         private GameObject _entity;
 
@@ -11,27 +14,16 @@ namespace KeepItAlive.Shared
 
         private float _initialHealth;
 
-        private float _healthBarLength;
-
         void Start () 
         {
-            if(_entity == null && Entity == null)
-            {
-                Debug.Log("Please attach IEntity");
-                return;
-            }
-          
             _initialHealth = Entity.Health;
-            _healthBarLength = Screen.width / 6;
         }
 
-        private void OnGUI() 
+        private void Update() 
         {
-            GUI.contentColor = Color.black;
-
-            if(Entity != null && Entity.Health >= 0)
+            if(_entity != null && Entity.Health > 0)
             {
-                GUI.Box(new Rect(700, 10, _healthBarLength, 20), $"{_initialHealth.ToString()} / {Entity.Health.ToString()} ");
+                _playerCanvas.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth} / {Entity.Health}", Color.black);
             }
         }
     }
