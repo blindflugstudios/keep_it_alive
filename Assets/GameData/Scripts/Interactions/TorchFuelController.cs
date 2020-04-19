@@ -59,7 +59,7 @@ public class TorchFuelController : MonoBehaviour
     public void AddFuel(float amount)
     {
         _fuel += amount;
-        _fuel = Mathf.Clamp(_fuel, 0.0f, 110.0f);
+        _fuel = Mathf.Clamp(_fuel, 10.0f, 110.0f);
 
         AdjustSize();
     }
