@@ -5,19 +5,19 @@ using UnityEngine;
 public class HealthbarWorldUI : MonoBehaviour
 {
     [SerializeField]
-    private WorldSpaceLabel _playerHealthLabelPrefab;
+    private WorldSpaceLabel _healthLabelPrefab;
     
     [SerializeField]
-    private WorldSpaceLabel _playerRadiationDamageLabelPrefab;
+    private WorldSpaceLabel _radiationDamageLabelPrefab;
     
     [SerializeField]
-    private WorldSpaceLabel _playerFreezeDamageLabelPrefab;
+    private WorldSpaceLabel _freezeDamageLabelPrefab;
 
-    public WorldSpaceLabel PlayerHealthLabelPrefab => _playerHealthLabelPrefab;
+    public WorldSpaceLabel HealthLabelPrefab => _healthLabelPrefab;
     
-    public WorldSpaceLabel PlayerRadiationDamageLabelPrefab => _playerRadiationDamageLabelPrefab;
+    public WorldSpaceLabel RadiationDamageLabelPrefab => _radiationDamageLabelPrefab;
     
-    public WorldSpaceLabel PlayerFreezeDamageLabelPrefab => _playerFreezeDamageLabelPrefab;
+    public WorldSpaceLabel FreezeDamageLabelPrefab => _freezeDamageLabelPrefab;
 
     public static HealthbarWorldUI Instance;
     

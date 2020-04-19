@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7061046373789793974}
   - component: {fileID: 8355407237919612212}
   m_Layer: 5
-  m_Name: PlayerRadiationDamageLabel
+  m_Name: RadiationDamageLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7061046373661468145}
   - component: {fileID: 8355407237770315379}
   m_Layer: 5
-  m_Name: PlayerFreezeDamageLabel
+  m_Name: FreezeDamageLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 7061046375043929358}
   - component: {fileID: 8355407239140112012}
   m_Layer: 5
-  m_Name: PlayerHealthLabel
+  m_Name: HealthLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 6427388288027027764}
   - component: {fileID: 6427388288027027769}
   m_Layer: 5
-  m_Name: Player Status Canvas
+  m_Name: Healthbar Status Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,6 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f225a464dfe811ca10122d9055bed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealthLabelPrefab: {fileID: 7061046375043929358}
-  _playerRadiationDamageLabelPrefab: {fileID: 7061046373789793974}
-  _playerFreezeDamageLabelPrefab: {fileID: 7061046373661468145}
+  _healthLabelPrefab: {fileID: 7061046375043929358}
+  _radiationDamageLabelPrefab: {fileID: 7061046373789793974}
+  _freezeDamageLabelPrefab: {fileID: 7061046373661468145}
