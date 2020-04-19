@@ -140,16 +140,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7603205041147394478, guid: d5d8be5094aabe14eb7687e4511da76d,
-        type: 3}
-      propertyPath: m_TimeToStationary
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7603205041147394478, guid: d5d8be5094aabe14eb7687e4511da76d,
-        type: 3}
-      propertyPath: m_CarveOnlyStationary
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7603205042602350928, guid: d5d8be5094aabe14eb7687e4511da76d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -995,11 +985,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: torch interactable
-      objectReference: {fileID: 0}
-    - target: {fileID: 8354446915563539177, guid: 0c29191268d598d4dabc4ff08806b0d2,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.0627451
       objectReference: {fileID: 0}
     - target: {fileID: 8354446915563539182, guid: 0c29191268d598d4dabc4ff08806b0d2,
         type: 3}
