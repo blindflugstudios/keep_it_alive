@@ -1,38 +1,38 @@
 ﻿using System.Collections;
+using KeepItAlive.Characters;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Pathfinding : MonoBehaviour
 {
-    [SerializeField] private float _additionalRotationSpeed;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private float _jumpDistance;
     [SerializeField] private Vector2 _jumpFrequency;
     [SerializeField] private float _jumpTime;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Transform _target;
-
+    [SerializeField] private CharacterAnimator _animator;
+    private Transform _visual;
     public bool ShouldNavigate;
-
+    
+    
     private void Start()
     {
         StartCoroutine(DodgeRoutine());
+        _visual = transform.GetChild(0);
     }
 
     private void Update()
     {
-        if (ShouldNavigate && _target != null)
+        var shouldMove = ShouldNavigate && _target != null;
+        _animator.SetMove(shouldMove);
+        if (shouldMove)
         {
             _agent.SetDestination(_target.position);
-            RotateTowardsTarget();
+            var visualScale = _visual.localScale;
+            visualScale.x = Mathf.Abs(visualScale.x) * -Mathf.Sign(_target.position.x - transform.position.x);
+            _visual.localScale = visualScale;
         }
-    }
-
-    private void RotateTowardsTarget()
-    {
-        var lookrotation = _agent.steeringTarget - transform.position;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookrotation),
-            _additionalRotationSpeed * Time.deltaTime);
     }
 
     private IEnumerator DodgeRoutine()
@@ -48,7 +48,8 @@ public class Pathfinding : MonoBehaviour
 
                 if (hit.collider == null)
                 {
-                    var dot = Vector3.Dot(transform.forward, (_target.position - transform.position).normalized);
+                    var lookRotation = (_agent.steeringTarget - transform.position).normalized;
+                    var dot = Vector3.Dot(lookRotation, (_target.position - transform.position).normalized);
                     if (dot > 0.5f)
                     {
                         ShouldNavigate = false;
@@ -64,7 +65,8 @@ public class Pathfinding : MonoBehaviour
     {
         var timeElapsed = 0f;
         var startPos = transform.position;
-        var endPos = startPos + (Random.value > 0.5f ? -1f : 1f) * _jumpDistance * transform.right;
+        var dirToEnemy = (_target.position - transform.position).normalized;
+        var endPos = startPos + (Random.value > 0.5f ? -1f : 1f) * _jumpDistance *Vector3.Cross(Vector3.back, dirToEnemy);
         endPos += 2f * _jumpDistance*(_target.position - transform.position).normalized;
         var dir = (endPos - startPos).normalized;
         var dist = Vector3.Distance(startPos, endPos);
@@ -72,7 +74,8 @@ public class Pathfinding : MonoBehaviour
         if (hit.collider != null && hit.collider.isTrigger == false)
             endPos = new Vector3(hit.point.x, hit.point.y, transform.position.z);
         var jumpTime = _jumpTime * (Vector3.Distance(startPos, endPos) / _jumpDistance);
-
+        
+        _animator.TriggerDash();
         while (timeElapsed < jumpTime)
         {
             timeElapsed += Time.deltaTime;

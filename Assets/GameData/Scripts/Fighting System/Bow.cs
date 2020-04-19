@@ -13,6 +13,29 @@ namespace GameData.Scripts.Fighting_System
         private Camera _mainCam;
         public Arrow arrowPrefab;
         public float arrowSpeed;
+        private bool _equipped = true;
+
+        [SerializeField]
+        public float coolDownTime = 1;
+
+        private float timeOfLastShot;
+
+        public bool Equipped
+        {
+            get => _equipped;
+            set
+            {
+                _equipped = value;
+                if (_equipped)
+                {
+                    EquipWeapon();
+                }
+                else
+                {
+                    UnEquipWeapon();
+                }
+            }
+        }
 
         private void Start()
         {
@@ -21,17 +44,14 @@ namespace GameData.Scripts.Fighting_System
 
         public void UseWeapon(InputAction.CallbackContext context)
         {
-            if (context.phase != InputActionPhase.Started)
+            if (context.phase == InputActionPhase.Canceled && _equipped && Time.time - timeOfLastShot > coolDownTime)
             {
-                return;
-            }
-            Arrow arrow;
+                Arrow arrow;
 
-            var shootDirection = CalculateShootDirection();
-        
-            arrowPrefab.ShootArrow(transform.position, arrowSpeed, shootDirection);
-            
-//            throw new System.NotImplementedException();
+                var shootDirection = CalculateShootDirection();
+                timeOfLastShot = Time.time;
+                arrowPrefab.ShootArrow(transform.position, arrowSpeed, shootDirection);
+            }
         }
 
         public void EquipWeapon()
