@@ -2,6 +2,7 @@
 using KeepItAlive.Characters;
 using KeepItAlive.World;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KeepItAlive
 {
@@ -9,14 +10,25 @@ namespace KeepItAlive
 	{
 		[SerializeField] private CameraController _camera;
 		[SerializeField] private Player.Player[] _playerPrefabs;
+		[SerializeField] private GameObject _gameFinishedScreen;
 
 		private Player.Player _player;
-		
-        public void Start()
-        {
-            WorldGenerator.Instance.Generate();
-			SpawnPlayer(Vector3.zero);
-        }
+		private FinishPoint _finishPoint;
+
+		private void OnDestinationReached()
+		{
+			_finishPoint.DestinationReached -= OnDestinationReached;
+			_player.OnDestinationReached();
+			_gameFinishedScreen.SetActive(true);
+		}
+
+		private void Start()
+		{
+			WorldGenerator.SpawnInfo spawnInfo = WorldGenerator.Instance.Generate();
+			spawnInfo.FinishPoint.DestinationReached += OnDestinationReached;
+			_finishPoint = spawnInfo.FinishPoint;
+			SpawnPlayer(spawnInfo.StartPoint.transform.position);
+		}
 
 		private void SpawnPlayer(Vector3 position)
 		{

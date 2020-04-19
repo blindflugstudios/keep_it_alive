@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6627234499512829589}
+  - component: {fileID: 2470754341082552150}
   m_Layer: 0
   m_Name: Interact_BatteryT1
   m_TagString: Untagged
@@ -24,13 +25,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6112183776377866359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.35, y: -0.88, z: -12.700001}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2929974519307453503}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2470754341082552150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112183776377866359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b691fdee278a47c2ad690ff5649b7fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 6620633804407623677}
 --- !u!1 &8122715249173860727
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,13 +153,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.8749614, y: -1.635432}
-      - {x: 0.011981964, y: -1.7792058}
-      - {x: 0.75589466, y: -1.7200975}
-      - {x: 1.1629, y: -1.2740581}
-      - {x: 0.91000175, y: -0.88670576}
-      - {x: 0.5797825, y: -0.70590436}
-      - {x: -0.14936733, y: -0.5947551}
-      - {x: -0.7785897, y: -0.7608545}
-      - {x: -1.0751362, y: -1.013617}
-      - {x: -1.2020197, y: -1.2312106}
+    - - {x: 0.44, y: -0.099999994}
+      - {x: 0.45999998, y: -0.03}
+      - {x: 0.31, y: 0.14}
+      - {x: 0.01, y: 0.22999999}
+      - {x: -0.39, y: 0.17999999}
+      - {x: -0.44, y: 0.11}
+      - {x: -0.42999998, y: 0.04}
+      - {x: -0.37, y: -0.13}
+      - {x: -0.16, y: -0.24}
+      - {x: 0.17, y: -0.24}
+      - {x: 0.21, y: -0.22}

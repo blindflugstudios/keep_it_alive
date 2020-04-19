@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7296752124841552098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7296752124841552108}
+  - component: {fileID: 7296752124841552099}
+  m_Layer: 0
+  m_Name: WorldGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7296752124841552108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7296752124841552098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7296752124841552099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7296752124841552098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74e6ce598cdc094f8406f57d3deabe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings:
+    _worldSize: 200
+    _startPoint: {fileID: -4997946120153813590, guid: 8f9b6787150188d4a917644c185fe4c3,
+      type: 3}
+    _finishPoint: {fileID: 7600582996708696686, guid: f1d3003059ee5be408ca4b14f58f68d2,
+      type: 3}
+    _biomeStickinessFactor: 0.15
+    _biomeGridSize: 21
+    _biomes:
+    - _offset: {x: 10, y: 10}
+      _size: 35
+      _strength: {x: 0.5, y: 0.7}
+      _probability: 0.4
+      _spawnCount: 35
+      _color: {r: 0, g: 1, b: 0.09392524, a: 1}
+      _prefabSettings:
+      - _prefab: {fileID: -7273945041619649083, guid: ebe86540c71c04e4a8ca361a2ed29b85,
+          type: 3}
+        _probability: 0.05
+      - _prefab: {fileID: -6004772924186567597, guid: e63b77224ca7d3e4693533e1ffafb02d,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: -775919313188239831, guid: 1bf1142b7c442b149a7380dec8603ffe,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: -4717333944654193180, guid: 5f1675bb83cca7b428aa98d0d356811a,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: 2913217299606102215, guid: 578eac9ba8ef06b4d94d9d16ec7b46e0,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: -2970089346134824935, guid: ea0cfe9c700355c4fa01ac4adbba1d5f,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: -7495692768812201532, guid: 972b3960f514e6a44ade76f0fc0c57a1,
+          type: 3}
+        _probability: 0.2
+    - _offset: {x: 5, y: 2}
+      _size: 20
+      _strength: {x: 0.3, y: 0.4}
+      _probability: 0.6
+      _spawnCount: 3
+      _color: {r: 1, g: 0, b: 0, a: 1}
+      _prefabSettings:
+      - _prefab: {fileID: -617925648030745411, guid: af1b8f22310287943b9f771970d2395b,
+          type: 3}
+        _probability: 0.3
+      - _prefab: {fileID: 7698769264083791796, guid: 86e4f2bf784d0dc4a93d8e998b65c8aa,
+          type: 3}
+        _probability: 0.4
+      - _prefab: {fileID: 4161239886333554087, guid: 3eb51e7414071df46941cd9f557bf6f8,
+          type: 3}
+        _probability: 0.05
+      - _prefab: {fileID: 8509790925360649519, guid: 4bcda81e4958db94f9ee1b54412be452,
+          type: 3}
+        _probability: 0.3
+    - _offset: {x: 5, y: 8}
+      _size: 26
+      _strength: {x: 0.4, y: 0.5}
+      _probability: 0.1
+      _spawnCount: 5
+      _color: {r: 0.07075471, g: 0.17547931, b: 1, a: 1}
+      _prefabSettings:
+      - _prefab: {fileID: 2470754341082552150, guid: d1df4f419436b8b4886ee126ec892af5,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: 4161239886333554087, guid: 3eb51e7414071df46941cd9f557bf6f8,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: -617925648030745411, guid: af1b8f22310287943b9f771970d2395b,
+          type: 3}
+        _probability: 0.5
+      - _prefab: {fileID: 3786606225207017007, guid: 2e9736ae3acfa1b4e8c6acf4ea837825,
+          type: 3}
+        _probability: 0.5
+      - _prefab: {fileID: -4379896783504883141, guid: b8ed3e2c34c018646a6fc128de42c01b,
+          type: 3}
+        _probability: 0.4
+      - _prefab: {fileID: 7698769264083791796, guid: 86e4f2bf784d0dc4a93d8e998b65c8aa,
+          type: 3}
+        _probability: 0.4
+    _shards:
+    - {fileID: -347466021665916017, guid: 7b763fefc07226d4d86548e3124f5ecd, type: 3}
+    - {fileID: -347466021665916017, guid: da943ca000702324baeccaa5fb30088a, type: 3}
+    - {fileID: -347466021665916017, guid: b1e90bea9811d2d4ebf9eb13d7ac50e6, type: 3}
+    - {fileID: -347466021665916017, guid: 96b6813879049324594e42267460c265, type: 3}
+    - {fileID: -347466021665916017, guid: ebb2301aabaa938479c1eda576af0e31, type: 3}
+  _debugBiomes: 1
