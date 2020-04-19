@@ -1,38 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(LineRenderer))]
 public class TorchFuelController : MonoBehaviour
 {
-    [SerializeField]
-    private FuelConfiguration _fuelConfiguration;
+    [SerializeField] private FuelConfiguration _fuelConfiguration;
+    [SerializeField] private float _beamLenght;
+    [SerializeField] private Vector3 _templeLocation;
 
     private SpriteRenderer _shineRenderer;
-
     private LineRenderer _lineRenderer;
-
     private float nextUpdate = 1.0f;
-
     private float _fuel;
-
+    private Vector3 _eulers;
+    
     void Start()
     {
+        _eulers = Vector3.up*90f;
         _shineRenderer = GetComponent<SpriteRenderer>();
         _lineRenderer = GetComponent<LineRenderer>();
         
         _fuel = _fuelConfiguration.InitialFuel;
-
+        _lineRenderer.positionCount = 2;
         AdjustSize();
     }
     
     void Update()
     {
-        if(_fuel >= 100.0f)
-        {
-            ShowDirectionOfTemple(new Vector2(20.0f, 20.0f));
-        }
+        ShowDirectionOfTemple(_fuel >= 100.0f);
 
         if(Time.time >= nextUpdate)
         {
@@ -42,21 +40,26 @@ public class TorchFuelController : MonoBehaviour
         }
     }
 
-    private void ShowDirectionOfTemple(Vector2 templeLocation)
+    private void ShowDirectionOfTemple(bool show)
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0,0,Mathf.Asin(templeLocation.y) * Mathf.Rad2Deg * (templeLocation.x < 0? -1: 1)));
-        
-        _lineRenderer.SetPositions(new Vector3[] 
+        _lineRenderer.enabled = show;
+        if (show)
         {
-             transform.position, 
-             new Vector3(templeLocation.x, templeLocation.y, 0)
-        });
+            var dirNormalized = (_templeLocation - transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(dirNormalized) *
+                                 Quaternion.Euler(_eulers);
+            _lineRenderer.SetPositions(new Vector3[]
+            {
+                transform.position,
+                transform.position + dirNormalized * _beamLenght
+            });
+        }
     }
 
     public void AddFuel(float amount)
     {
         _fuel += amount;
-        _fuel = Mathf.Clamp(_fuel, 0.0f, 100.0f);
+        _fuel = Mathf.Clamp(_fuel, 10.0f, 110.0f);
 
         AdjustSize();
     }

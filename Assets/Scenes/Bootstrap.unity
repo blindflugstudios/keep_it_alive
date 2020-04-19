@@ -140,16 +140,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7603205041147394478, guid: d5d8be5094aabe14eb7687e4511da76d,
-        type: 3}
-      propertyPath: m_TimeToStationary
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7603205041147394478, guid: d5d8be5094aabe14eb7687e4511da76d,
-        type: 3}
-      propertyPath: m_CarveOnlyStationary
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7603205042602350928, guid: d5d8be5094aabe14eb7687e4511da76d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -515,11 +505,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4621099793754308038, guid: a1138704a7eda82439400074deb50502,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4621099793754308039, guid: a1138704a7eda82439400074deb50502,
         type: 3}
@@ -1104,21 +1089,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch interactable
       objectReference: {fileID: 0}
-    - target: {fileID: 8354446915563539177, guid: 0c29191268d598d4dabc4ff08806b0d2,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.0627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 8354446915563539180, guid: 0c29191268d598d4dabc4ff08806b0d2,
-        type: 3}
-      propertyPath: m_TagString
-      value: Radioactive
-      objectReference: {fileID: 0}
     - target: {fileID: 8354446915563539182, guid: 0c29191268d598d4dabc4ff08806b0d2,
         type: 3}
       propertyPath: _fuelConfiguration
       value: 
       objectReference: {fileID: 1633298053}
+    - target: {fileID: 8354446915563539182, guid: 0c29191268d598d4dabc4ff08806b0d2,
+        type: 3}
+      propertyPath: _beamLenght
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354446915563539182, guid: 0c29191268d598d4dabc4ff08806b0d2,
+        type: 3}
+      propertyPath: _templeLocation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354446915563539182, guid: 0c29191268d598d4dabc4ff08806b0d2,
+        type: 3}
+      propertyPath: _templeLocation.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c29191268d598d4dabc4ff08806b0d2, type: 3}
 --- !u!1 &8354446914665989870 stripped
@@ -1145,7 +1135,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1169,7 +1159,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1182,13 +1172,22 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.32191813, g: 1, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 0.32191813, g: 1, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1308,12 +1307,12 @@ PrefabInstance:
     - target: {fileID: 8543217199596159543, guid: be0e1d7b2a3dd57ffb2d20a601c81af5,
         type: 3}
       propertyPath: _freezeDamagePerTick
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8543217199596159543, guid: be0e1d7b2a3dd57ffb2d20a601c81af5,
         type: 3}
       propertyPath: _radiationDamagePerTick
-      value: 10
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be0e1d7b2a3dd57ffb2d20a601c81af5, type: 3}
