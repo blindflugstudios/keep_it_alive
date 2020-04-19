@@ -57,7 +57,7 @@ namespace KeepItAlive.Enemies
         {
             if (other.CompareTag(Tags.ArrowTag))
             {
-             				return;
+                return;
             }
 
             float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
