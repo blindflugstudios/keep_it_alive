@@ -1,5 +1,6 @@
 ﻿using KeepItAlive.Camera;
 using KeepItAlive.Characters;
+using KeepItAlive.Shared;
 using KeepItAlive.World;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,6 +11,7 @@ namespace KeepItAlive
 	{
 		[SerializeField] private CameraController _camera;
 		[SerializeField] private Player.Player[] _playerPrefabs;
+		[SerializeField] private EnvironmentalDamageConfiguration _damageConfiguration;
 		[SerializeField] private GameObject _gameFinishedScreen;
 
 		private Player.Player _player;
@@ -44,6 +46,7 @@ namespace KeepItAlive
 			_player = Instantiate(_playerPrefabs[Random.Range(0, _playerPrefabs.Length)], position, Quaternion.identity);
 			_player.Dead += OnPlayerDead;
 			_camera.PlayerMotor = _player.GetComponent<CharacterMotor>();
+			_camera.LookAt(position);
 		}
 
 		private void OnPlayerDead()

@@ -11,7 +11,6 @@ namespace KeepItAlive.Camera
 		[SerializeField] private float _followRatio;
 		[SerializeField] private float _followLerpRatio;
 		[SerializeField] private float _returnLerpRatio;
-		[SerializeField] private CharacterMotor _player;
 		
 		private CharacterMotor _playerMotor;
 		private Transform _playerTransform;
@@ -28,6 +27,11 @@ namespace KeepItAlive.Camera
 				_playerMotor = value;
 				_playerTransform = _playerMotor.transform;
 			}
+		}
+
+		public void LookAt(Vector3 position)
+		{
+			transform.position = new Vector3(position.x, position.y, _cameraZ);
 		}
 
 		private void LateUpdate()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using KeepItAlive.Shared;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ using UnityEngine;
 public class TorchFuelController : MonoBehaviour
 {
     [SerializeField]
-    private FuelConfiguration _fuelConfiguration;
+    private Configuration _fuelConfiguration;
 
     private SpriteRenderer _shineRenderer;
 

@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _environmentalDamageConfiguration: {fileID: 0}
-  _animator: {fileID: 0}
+  _configuration: {fileID: 11400000, guid: 00b633fdd3f976242a450365073f01fc, type: 2}
+  _animator: {fileID: 6882638622489703480}
   _deathAnimationTime: 1.5
   Inventory: {fileID: 1737232178869905924}
 --- !u!114 &-688583960914528756

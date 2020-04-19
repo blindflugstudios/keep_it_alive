@@ -7,14 +7,13 @@ using UnityEngine.InputSystem;
 
 namespace KeepItAlive.Player
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class Player : MonoBehaviour, IEntity
     {
         [SerializeField]
         private float _health;
 
         [SerializeField]
-        private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
+        private Configuration _configuration;
 
 		[SerializeField] private CharacterAnimator _animator;
 		[SerializeField] private float _deathAnimationTime;
@@ -44,7 +43,7 @@ namespace KeepItAlive.Player
 
 		private void Start()
         {
-            _damageManager = new DamageManager(_environmentalDamageConfiguration);
+            _damageManager = new DamageManager(_configuration);
             _damageManager.ReceivesFreezeDamage = true;
             _damageManager.ReceivesRadiationDamage = true;
 

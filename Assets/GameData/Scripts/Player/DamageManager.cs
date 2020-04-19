@@ -8,11 +8,11 @@ namespace KeepItAlive.Player
         public bool ReceivesFreezeDamage { get; set; }
         public bool ReceivesRadiationDamage { get; set; }
 
-        private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
+        private Configuration _environmentalDamageConfiguration;
 
-        public DamageManager(EnvironmentalDamageConfiguration environmentalDamageConfiguration)
+        public DamageManager(Configuration configuration)
         {
-            _environmentalDamageConfiguration = environmentalDamageConfiguration;
+            _environmentalDamageConfiguration = configuration;
         }
 
         public float ApplyDamageReturnRemainingHealth(float health)
