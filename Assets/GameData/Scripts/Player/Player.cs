@@ -49,12 +49,11 @@ namespace KeepItAlive.Player
         private void Awake()
         {
              _damageManager = new DamageManager(_configuration);
+             _damageManager.ReceivesFreezeDamage = true;
         }
 
 		private void Start()
         {
-            _damageManager.ReceivesFreezeDamage = true;
-
 			_input = GetComponent<PlayerInput>();
 			_input.enabled = false;
 			_input.enabled = true;
@@ -79,12 +78,22 @@ namespace KeepItAlive.Player
         {
             if(other.CompareTag(Tags.RadioactiveTag))
             {
+                _damageManager.ReceivesFreezeDamage = false;
                 _damageManager.ReceivesRadiationDamage = true;
             }
 
             if (other.CompareTag(Tags.EnemyTag))
             {
                 DealDamage();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if(other.CompareTag(Tags.RadioactiveTag))
+            {
+                _damageManager.ReceivesFreezeDamage = true;
+                _damageManager.ReceivesRadiationDamage = false;
             }
         }
 
@@ -98,13 +107,7 @@ namespace KeepItAlive.Player
 			_health = remainingHealth; 
 		}
 
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if(other.CompareTag(Tags.RadioactiveTag))
-            {
-                _damageManager.ReceivesRadiationDamage = false;
-            }
-        }
+
 
 		private IEnumerator DeathCoroutine()
 		{
