@@ -28,10 +28,15 @@ namespace KeepItAlive.Player
 		private PlayerInput _input;
 
         private float nextUpdate = 1.0f;
+
 		private bool _isDead;
 
         public float Health => _health;
 
+        public bool ReceivesRadiationDamage => _damageManager.ReceivesRadiationDamage;
+
+        public bool ReceivesFreezeDamage => _damageManager.ReceivesFreezeDamage;        
+        
         public PlayerInventory Inventory;
 
 		public void OnDestinationReached()
@@ -75,16 +80,6 @@ namespace KeepItAlive.Player
             {
                 Die();
             }
-
-            if(_damageManager.ReceivesFreezeDamage)
-            {
-                _playerCanvas.PlayerFreezeDamageLabelPrefab.DisplayText("Receiving Freeze Damage!", Color.black);
-            }
-
-            if(_damageManager.ReceivesRadiationDamage)
-            {
-                _playerCanvas.PlayerRadiationDamageLabelPrefab.DisplayText("Receiving Radiation Damage!", Color.black);
-            }
         }
 
 		private void OnTriggerEnter2D(Collider2D other)
@@ -120,6 +115,11 @@ namespace KeepItAlive.Player
 			_health = remainingHealth; 
 		}
 
+		public void DealDamage(float damge)
+		{
+			_animator?.TriggerDamage();
+			_health -= damge;
+		}
 
 
 		private IEnumerator DeathCoroutine()

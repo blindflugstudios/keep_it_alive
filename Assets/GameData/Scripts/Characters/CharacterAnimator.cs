@@ -12,9 +12,9 @@ namespace KeepItAlive.Characters
 
 		private Animator _animator;
 		
-		public void SetAttack(bool isAttack)
+		public void SetAttack()
 		{
-			_animator.SetBool(_attackHash, isAttack);
+			_animator.SetTrigger(_attackHash);
 		}
 
 		public void SetMove(bool isMove)

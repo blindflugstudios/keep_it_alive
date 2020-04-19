@@ -6,6 +6,10 @@ namespace KeepItAlive.Shared
     {
         float Health { get; }
 
+        bool ReceivesRadiationDamage { get; }
+
+        bool ReceivesFreezeDamage { get; }
+
         void Die();
     }
 }
