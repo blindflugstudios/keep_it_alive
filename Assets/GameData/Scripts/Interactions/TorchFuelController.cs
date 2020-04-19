@@ -5,16 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class TorchFuelController : MonoBehaviour
 {
-    
 	[SerializeField] private Configuration _fuelConfiguration;
     [SerializeField] private float _beamLenght;
-    [SerializeField] private Vector3 _templeLocation;
 
     private SpriteRenderer _shineRenderer;
     private LineRenderer _lineRenderer;
+	private Vector3 _templeLocation;
     private float nextUpdate = 1.0f;
     private float _fuel;
     private Vector3 _eulers;
+
+	public void SetDestinationCoords(Vector3 destinationCoords)
+	{
+		_templeLocation = destinationCoords;
+	}
     
     void Start()
     {
