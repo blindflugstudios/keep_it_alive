@@ -1,3 +1,4 @@
+using KeepItAlive.Player;
 using UnityEngine;
 
 namespace KeepItAlive.Characters
@@ -12,6 +13,7 @@ namespace KeepItAlive.Characters
 		[SerializeField] private float _depthMovementScale;
 		[SerializeField] private LayerMask _obstacleLayer;
 		[SerializeField] private CharacterAnimator _animator;
+		[SerializeField] private PlayerAnimator _playerAnimator;
 		
 		private BoxCollider2D _collider;
 		private Transform _transform;
@@ -31,7 +33,13 @@ namespace KeepItAlive.Characters
 		{
 			UpdateRaycastOrigins();
 			MoveOneFrame(Time.deltaTime);
-			
+			Animate();
+		}
+
+		private void Animate()
+		{
+			Vector2 velocity = _currentVelocity / _moveSpeed;
+			_playerAnimator?.SetMovement(velocity.y / _depthMovementScale, velocity.x);
 			_animator?.SetMove(_currentVelocity.magnitude > 0f);
 		}
 
