@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19f1b1334424c13a71ea31556b34d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followRatio: 0.6
-  _followLerpRatio: 0.8
+  _followRatio: 0.5
+  _followLerpRatio: 0.9
   _returnLerpRatio: 0.4
