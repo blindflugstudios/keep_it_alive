@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeepItAlive.Characters;
+using System;
 using UnityEngine;
 using KeepItAlive.Shared;
 using System.Collections;
@@ -15,7 +16,8 @@ namespace KeepItAlive.Player
         [SerializeField]
         private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
 
-		[SerializeField] private AnimationCurve _deathAnimationCurve;
+		[SerializeField] private CharacterAnimator _animator;
+		[SerializeField] private float _deathAnimationTime;
 
 		public event Action Dead;
 
@@ -40,8 +42,13 @@ namespace KeepItAlive.Player
         {
             //Apply Environment effects every second
             if(Time.time >= nextUpdate)
-            {
-                _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   
+			{
+				float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+				if (_health > remainingHealth)
+				{
+					_animator?.TriggerDamage();					
+				}
+                _health = remainingHealth;   
                 nextUpdate = Mathf.FloorToInt(Time.time)+1;
             }
 
@@ -61,27 +68,15 @@ namespace KeepItAlive.Player
 		{
 			_input.enabled = false;
 			
-			yield return DeathAnimation(); //Animation goes here
+			_animator?.TriggerDeath();
+			yield return new WaitForSeconds(_deathAnimationTime); //Animation goes here
 			
 			Dead?.Invoke();
 			
 			Destroy(gameObject);
 		}
 
-		private IEnumerator DeathAnimation()
-		{
-			const float animationTime = 2f;
-			var currentTime = 0f;
-			while (currentTime < animationTime)
-			{
-				transform.Rotate(Vector3.forward, 360 * Time.deltaTime);
-				transform.localScale = _deathAnimationCurve.Evaluate(currentTime / animationTime) * Vector3.one;
-				yield return null;
-				currentTime += Time.deltaTime;
-			}			
-		}
-
-        private bool DieCondition()
+		private bool DieCondition()
         {
             //TODO: Discuss and probably more to come
             return _health < 0.0f;

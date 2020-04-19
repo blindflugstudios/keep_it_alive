@@ -98,9 +98,11 @@ GameObject:
   - component: {fileID: -688583960914528756}
   - component: {fileID: 4061605051390155124}
   - component: {fileID: -9135421667732444821}
+  - component: {fileID: 6882638622489703480}
   - component: {fileID: 1737232178869905924}
   - component: {fileID: 4716836281663962651}
   - component: {fileID: 8263053741150675588}
+  - component: {fileID: 6156356324643076748}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -138,66 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _environmentalDamageConfiguration: {fileID: 0}
-  _deathAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0010526315
-      value: 1.0023584
-      inSlope: 1.6490417
-      outSlope: 1.6490417
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.088876754
-      value: 1.1506557
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.21418783
-      value: 0.7947737
-      inSlope: -2.978622
-      outSlope: -2.978622
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.38403407
-      value: 0.26531956
-      inSlope: -1.5004514
-      outSlope: -1.5004514
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.6407033
-      value: 0.010365106
-      inSlope: -0.06241056
-      outSlope: -0.06241056
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.18802565
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9998431
-      value: -0.002938153
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _animator: {fileID: 0}
+  _deathAnimationTime: 1.5
   Inventory: {fileID: 1737232178869905924}
 --- !u!114 &-688583960914528756
 MonoBehaviour:
@@ -254,6 +198,19 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
+  _animator: {fileID: 6882638622489703480}
+--- !u!114 &6882638622489703480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263053741403113933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6afef9a1284c6a83ea2c5fae27fa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1737232178869905924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +379,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6156356324643076748
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263053741403113933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c3bd9eb17c8018d4ebf66c769d9c70a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8011883914427932480
 PrefabInstance:
   m_ObjectHideFlags: 0
