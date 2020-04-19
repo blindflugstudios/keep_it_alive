@@ -5,29 +5,35 @@ namespace KeepItAlive.Player
 {
     public class DamageManager
     {
-        private bool receivesFreezeDamage;
-        private bool receivesRadiationDamage;
+        public bool ReceivesFreezeDamage { get; set; }
+        public bool ReceivesRadiationDamage { get; set; }
 
-        private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
+        private Configuration _environmentalDamageConfiguration;
 
-        public DamageManager(EnvironmentalDamageConfiguration environmentalDamageConfiguration)
+        public DamageManager(Configuration configuration)
         {
-            _environmentalDamageConfiguration = environmentalDamageConfiguration;
+            _environmentalDamageConfiguration = configuration;
         }
 
         public float ApplyDamageReturnRemainingHealth(float health)
         {
-            if(receivesFreezeDamage)
+            if(ReceivesFreezeDamage)
             {
                 health = Freeze(health);
             }
 
-            if(receivesRadiationDamage)
+            if(ReceivesRadiationDamage)
             {
                 health = Radiate(health);
             }
 
             return health;
+        }
+
+        public float ApplyEnemyDamageReturnRemainingHealth(float health)
+        {
+            //TODO: Make damage configurable per enemy
+            return health - 15;
         }
 
         private float Freeze(float health)

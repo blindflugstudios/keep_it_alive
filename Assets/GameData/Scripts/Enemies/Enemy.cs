@@ -1,10 +1,10 @@
-﻿using System;
+﻿using KeepItAlive.Characters;
 using UnityEngine;
 using KeepItAlive.Shared;
+using System.Collections;
 
 namespace KeepItAlive.Enemies
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class Enemy : MonoBehaviour, IEntity
     {
         [SerializeField]
@@ -12,8 +12,11 @@ namespace KeepItAlive.Enemies
 
         [SerializeField]
         private GameObject _deathItemPrefab;
+		[SerializeField] private CharacterAnimator _animator;
+		[SerializeField] private float _deathAnimationTime;
 
         private DamageManager _damageManager;
+		private bool _isDead;
 
         public float Health => _health;
 
@@ -32,30 +35,38 @@ namespace KeepItAlive.Enemies
 
         public void Die()
         {
-            DeathAnimation();
-            Destroy(gameObject);
-
-            //Turns into other object
-            Instantiate(_deathItemPrefab);
+			if (_isDead == false)
+			{
+				StartCoroutine(DeathAnimation());
+				_isDead = true;
+			}
         }
         
         private bool DieCondition()
         {
-            //TODO: Discuss and probably more to come
             return _health < 0.0f;
         }
 
-        private void DeathAnimation()
+        private IEnumerator DeathAnimation()
         {
-            //TODO: IMPLEMENT
-            throw new NotImplementedException();
+			_animator?.TriggerDeath();
+			yield return new WaitForSeconds(_deathAnimationTime);
+			
+			//Turns into other object
+			Instantiate(_deathItemPrefab, transform.position, Quaternion.identity);
+			Destroy(gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Arrow"))
+            if (other.CompareTag(Tags.ArrowTag))
             {
-                _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+                float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+                if (remainingHealth < _health)
+                {
+                    _animator?.TriggerDamage();
+                }
+                _health = remainingHealth;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeepItAlive.Characters;
+using System;
 using UnityEngine;
 using KeepItAlive.Shared;
 using System.Collections;
@@ -6,42 +7,64 @@ using UnityEngine.InputSystem;
 
 namespace KeepItAlive.Player
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class Player : MonoBehaviour, IEntity
     {
         [SerializeField]
         private float _health;
 
         [SerializeField]
-        private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
+        private Configuration _configuration;
 
-		[SerializeField] private AnimationCurve _deathAnimationCurve;
+		[SerializeField] private CharacterAnimator _animator;
+		[SerializeField] private float _deathAnimationTime;
 
 		public event Action Dead;
 
         private DamageManager _damageManager;
+        
 		private PlayerInput _input;
 
         private float nextUpdate = 1.0f;
+		private bool _isDead;
 
         public float Health => _health;
 
         public PlayerInventory Inventory;
-        
-        public void Start()
+
+		public void OnDestinationReached()
+		{
+			_input.enabled = false;
+		}
+
+		[ContextMenu("Die")]
+		public void Die()
+		{
+			if (_isDead == false)
+			{
+				StartCoroutine(DeathCoroutine());
+				_isDead = true;
+			}
+		}
+
+        private void Awake()
         {
-            _damageManager = new DamageManager(_environmentalDamageConfiguration);
+             _damageManager = new DamageManager(_configuration);
+             _damageManager.ReceivesFreezeDamage = true;
+        }
+
+		private void Start()
+        {
 			_input = GetComponent<PlayerInput>();
 			_input.enabled = false;
 			_input.enabled = true;
 		}
 
-        public void Update()
+		private void Update()
         {
             //Apply Environment effects every second
             if(Time.time >= nextUpdate)
-            {
-                _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   
+			{
+				DealDamage();
                 nextUpdate = Mathf.FloorToInt(Time.time)+1;
             }
 
@@ -51,40 +74,72 @@ namespace KeepItAlive.Player
             }
         }
 
-		[ContextMenu("Die")]
-        public void Die()
+		private void OnTriggerEnter2D(Collider2D other)
+        {
+            if(other.CompareTag(Tags.RadioactiveTag))
+            {
+                _damageManager.ReceivesFreezeDamage = false;
+                _damageManager.ReceivesRadiationDamage = true;
+            }
+
+            if (other.CompareTag(Tags.EnemyTag))
+            {
+                DealDamage();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if(other.CompareTag(Tags.RadioactiveTag))
+            {
+                _damageManager.ReceivesFreezeDamage = true;
+                _damageManager.ReceivesRadiationDamage = false;
+            }
+        }
+
+		private void DealDamage()
 		{
-			StartCoroutine(DeathCoroutine());
+			float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+			if (_health > remainingHealth)
+			{
+				_animator?.TriggerDamage();					
+			}
+			_health = remainingHealth; 
 		}
+
+
 
 		private IEnumerator DeathCoroutine()
 		{
 			_input.enabled = false;
 			
-			yield return DeathAnimation(); //Animation goes here
+			_animator?.TriggerDeath();
+			yield return new WaitForSeconds(_deathAnimationTime); //Animation goes here
 			
 			Dead?.Invoke();
 			
 			Destroy(gameObject);
 		}
 
-		private IEnumerator DeathAnimation()
-		{
-			const float animationTime = 2f;
-			var currentTime = 0f;
-			while (currentTime < animationTime)
-			{
-				transform.Rotate(Vector3.forward, 360 * Time.deltaTime);
-				transform.localScale = _deathAnimationCurve.Evaluate(currentTime / animationTime) * Vector3.one;
-				yield return null;
-				currentTime += Time.deltaTime;
-			}			
-		}
-
-        private bool DieCondition()
+		private bool DieCondition()
         {
             //TODO: Discuss and probably more to come
             return _health < 0.0f;
         }
+
+        private void OnGUI() 
+        {
+            GUI.contentColor = Color.black;
+
+            if(_damageManager.ReceivesFreezeDamage)
+            {
+                GUI.Box(new Rect(700, 50, 200, 20), "Receiving Freeze Damage!");
+            }
+
+            if(_damageManager.ReceivesRadiationDamage)
+            {
+                GUI.Box(new Rect(700, 80, 200, 20), "Receiving Radiation Damage!");
+            }
+        } 
 	}
 }

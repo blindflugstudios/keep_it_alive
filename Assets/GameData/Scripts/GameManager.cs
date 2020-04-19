@@ -1,7 +1,9 @@
 ﻿using KeepItAlive.Camera;
 using KeepItAlive.Characters;
+using KeepItAlive.Shared;
 using KeepItAlive.World;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KeepItAlive
 {
@@ -9,20 +11,42 @@ namespace KeepItAlive
 	{
 		[SerializeField] private CameraController _camera;
 		[SerializeField] private Player.Player[] _playerPrefabs;
+		[SerializeField] private GameObject _gameFinishedScreen;
 
 		private Player.Player _player;
-		
-        public void Start()
-        {
-            WorldGenerator.Instance.Generate();
-			//SpawnPlayer(Vector3.zero);
-        }
+		private FinishPoint _finishPoint;
+
+		private void OnDestinationReached()
+		{
+			_finishPoint.DestinationReached -= OnDestinationReached;
+			_player.OnDestinationReached();
+			_gameFinishedScreen.SetActive(true);
+		}
+
+		private void Start()
+		{
+			WorldGenerator.SpawnInfo spawnInfo = WorldGenerator.Instance.Generate();
+			spawnInfo.FinishPoint.DestinationReached += OnDestinationReached;
+			_finishPoint = spawnInfo.FinishPoint;
+			spawnInfo.StartPoint.Torch.SetDestinationCoords(spawnInfo.FinishPoint.transform.position);
+			SpawnPlayer(spawnInfo.StartPoint.transform.position);
+		}
 
 		private void SpawnPlayer(Vector3 position)
 		{
+			if (_playerPrefabs == null || _playerPrefabs.Length <= 0)
+			{
+				return;
+			}
+			
+			if (_player != null)
+			{
+				_player.Dead -= OnPlayerDead;
+			}
 			_player = Instantiate(_playerPrefabs[Random.Range(0, _playerPrefabs.Length)], position, Quaternion.identity);
 			_player.Dead += OnPlayerDead;
 			_camera.PlayerMotor = _player.GetComponent<CharacterMotor>();
+			_camera.LookAt(position);
 		}
 
 		private void OnPlayerDead()
