@@ -18,4 +18,12 @@ public class PlayerWorldSpaceUI : MonoBehaviour
     public WorldSpaceLabel PlayerRadiationDamageLabelPrefab => _playerRadiationDamageLabelPrefab;
     
     public WorldSpaceLabel PlayerFreezeDamageLabelPrefab => _playerFreezeDamageLabelPrefab;
+
+    public static PlayerWorldSpaceUI Instance;
+    
+    private void Awake()
+    {
+        Instance = this;
+    }
+
 }
