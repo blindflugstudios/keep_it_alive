@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4018667417208207982}
   - component: {fileID: 2913217299606102215}
+  - component: {fileID: 4741039466613495690}
   m_Layer: 8
   m_Name: Tree04
   m_TagString: Untagged
@@ -45,6 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 9189995925171171786}
+--- !u!114 &4741039466613495690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145748696591103716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6277940d44264f4d97c99c2c845442de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6547677918893785353
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6547677918893785353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4018667417208207982}

@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375eda8ea804ee149a386764cef5e15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _torchFuelController: {fileID: 3902862171821534803}
+  _torchFuelController: {fileID: 6581212008993635064}
 --- !u!1 &8354446915563539180
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,9 +246,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5571747463656120231}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3902862171821534803 stripped
+--- !u!114 &6581212008993635064 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8897726086185710068, guid: df095bbda5398834da89c108b8f9da06,
+  m_CorrespondingSourceObject: {fileID: 1587514162151531871, guid: df095bbda5398834da89c108b8f9da06,
     type: 3}
   m_PrefabInstance: {fileID: 5571747463656120231}
   m_PrefabAsset: {fileID: 0}
