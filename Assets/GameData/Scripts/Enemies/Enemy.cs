@@ -20,6 +20,10 @@ namespace KeepItAlive.Enemies
 
         public float Health => _health;
 
+        public bool ReceivesRadiationDamage => false;
+
+        public bool ReceivesFreezeDamage => false;
+
         private void Start()
         {
             _damageManager = new DamageManager();
