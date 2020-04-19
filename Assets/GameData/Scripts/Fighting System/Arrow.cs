@@ -11,7 +11,8 @@ namespace GameData.Scripts.Fighting_System
         [SerializeField]
         private Rigidbody2D rb2d;
 
-        private const float Friction = 0.1f;
+        private float _aliveTime = 4;
+        private bool stopArrow;
 
         public static Arrow CreateNewArrow()
         {
@@ -31,10 +32,14 @@ namespace GameData.Scripts.Fighting_System
         private IEnumerator FlyCoroutine(float speed, Vector2 direction)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0,0,Mathf.Asin(direction.y) * Mathf.Rad2Deg * (direction.x < 0? -1: 1)));
-            while (speed > 0)
+            while (_aliveTime > 0)
             {
-                speed -= Friction;
-                rb2d.MovePosition((Vector2) transform.position + Time.deltaTime * speed * direction);
+                if(!stopArrow)
+                {
+                    _aliveTime -= Time.deltaTime;
+                    speed /= 1.01f;
+                    rb2d.MovePosition((Vector2) transform.position + Time.deltaTime * speed * direction);
+                }
                 yield return null;
             }
             Destroy(gameObject);
@@ -47,6 +52,11 @@ namespace GameData.Scripts.Fighting_System
                 case "Enemy":
                     Destroy(gameObject);
                     break;
+                case "Obstacle":
+                    stopArrow = true;
+                    Destroy(GetComponent<BoxCollider2D>());
+                    break;
+                    
             }
 //            throw new NotImplementedException();
         }
