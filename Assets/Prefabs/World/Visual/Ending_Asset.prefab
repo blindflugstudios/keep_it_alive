@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017955067669798593}
   - component: {fileID: 4980803407049733151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BatterySphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,9 +174,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7608513648461608406}
   - component: {fileID: 6862843243099300231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Altar
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4464537254570754711}
   - component: {fileID: 6432624917363109859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sheet03_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 1936122717322209237}
   - component: {fileID: 4102468015030061568}
   - component: {fileID: 7717273928182440518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5074,7 +5074,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!1 &9204670855725399064
+--- !u!1 &8236779101204031987
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5082,43 +5082,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3943210777040951201}
-  - component: {fileID: 3963726224567160639}
-  m_Layer: 0
-  m_Name: Ending_Asset
+  - component: {fileID: 5617344603927392324}
+  - component: {fileID: 7867021597644027513}
+  m_Layer: 10
+  m_Name: SpawnCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3943210777040951201
+--- !u!4 &5617344603927392324
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204670855725399064}
+  m_GameObject: {fileID: 8236779101204031987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.195437, y: 11.872151, z: -6.531107}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7608513648461608406}
-  - {fileID: 578869400736644473}
-  - {fileID: 4116716673684709872}
-  - {fileID: 6677914459497811135}
-  - {fileID: 6993465266033358840}
-  - {fileID: 1964836983630943596}
-  - {fileID: 6748992458439943493}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 3943210777040951201}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &3963726224567160639
+--- !u!60 &7867021597644027513
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204670855725399064}
+  m_GameObject: {fileID: 8236779101204031987}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -5143,6 +5136,71 @@ PolygonCollider2D:
       - {x: -0.96045876, y: -4.6422396}
       - {x: 7.775077, y: -0.5960598}
       - {x: 4.1986475, y: 2.891119}
+--- !u!1 &9204670855725399064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3943210777040951201}
+  - component: {fileID: 8610519872349875272}
+  - component: {fileID: 5460666365603193960}
+  m_Layer: 0
+  m_Name: Ending_Asset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3943210777040951201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204670855725399064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7608513648461608406}
+  - {fileID: 578869400736644473}
+  - {fileID: 4116716673684709872}
+  - {fileID: 6677914459497811135}
+  - {fileID: 6993465266033358840}
+  - {fileID: 1964836983630943596}
+  - {fileID: 6748992458439943493}
+  - {fileID: 5617344603927392324}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8610519872349875272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204670855725399064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0022a965384026b36cf532892ea947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5460666365603193960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204670855725399064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64321a7284f4baf8edff9efcb92b3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 7867021597644027513}
 --- !u!1001 &1956391203566676278
 PrefabInstance:
   m_ObjectHideFlags: 0

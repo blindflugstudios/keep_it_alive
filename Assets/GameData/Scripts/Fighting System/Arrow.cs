@@ -60,5 +60,14 @@ namespace GameData.Scripts.Fighting_System
             }
 //            throw new NotImplementedException();
         }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Obstacle"))
+            {
+                stopArrow = true;
+                Destroy(GetComponent<BoxCollider2D>());
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3799998746521040634}
   m_Layer: 8
   m_Name: Sheet01_0
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: -450774709864847833}
   m_Layer: 8
   m_Name: Pylon03
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
