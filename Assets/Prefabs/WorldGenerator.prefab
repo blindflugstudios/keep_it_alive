@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7296752124841552098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 2068066097576495056}
   m_Father: {fileID: 0}
@@ -50,6 +50,10 @@ MonoBehaviour:
       type: 3}
     _finishPoint: {fileID: 7600582996708696686, guid: f1d3003059ee5be408ca4b14f58f68d2,
       type: 3}
+    _decals:
+    - {fileID: 758523805341421560, guid: d439f04b72966a347acdccb9237bc914, type: 3}
+    - {fileID: 7625422765300157793, guid: 4674dbeba96f4a240840a2545555a0ae, type: 3}
+    _decalAmount: 40
     _biomeStickinessFactor: 0.15
     _biomeGridSize: 21
     _biomes:
@@ -81,6 +85,12 @@ MonoBehaviour:
       - _prefab: {fileID: -7495692768812201532, guid: 972b3960f514e6a44ade76f0fc0c57a1,
           type: 3}
         _probability: 0.2
+      - _prefab: {fileID: 4558480743454951204, guid: 6caa2e28ab7c52a469be3052ea182373,
+          type: 3}
+        _probability: 0.3
+      - _prefab: {fileID: 9187097921385629775, guid: 6cf744710859a8347acb5afad14165b9,
+          type: 3}
+        _probability: 0.3
     - _offset: {x: 5, y: 2}
       _size: 20
       _strength: {x: 0.3, y: 0.4}
@@ -100,11 +110,29 @@ MonoBehaviour:
       - _prefab: {fileID: 8509790925360649519, guid: 4bcda81e4958db94f9ee1b54412be452,
           type: 3}
         _probability: 0.3
+      - _prefab: {fileID: -4717333944654193180, guid: 5f1675bb83cca7b428aa98d0d356811a,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: -7495692768812201532, guid: 972b3960f514e6a44ade76f0fc0c57a1,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: 2913217299606102215, guid: 578eac9ba8ef06b4d94d9d16ec7b46e0,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: -2970089346134824935, guid: ea0cfe9c700355c4fa01ac4adbba1d5f,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: 473970771262792977, guid: 9b0eed0673f656745bc717c32b08d78f,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: 4424899195483591423, guid: 156bf7c304a46594595c222cc15ff9d7,
+          type: 3}
+        _probability: 0.05
     - _offset: {x: 5, y: 8}
       _size: 26
       _strength: {x: 0.4, y: 0.5}
       _probability: 0.1
-      _spawnCount: 5
+      _spawnCount: 3
       _color: {r: 0.07075471, g: 0.17547931, b: 1, a: 1}
       _prefabSettings:
       - _prefab: {fileID: 2470754341082552150, guid: d1df4f419436b8b4886ee126ec892af5,
@@ -125,6 +153,12 @@ MonoBehaviour:
       - _prefab: {fileID: 7698769264083791796, guid: 86e4f2bf784d0dc4a93d8e998b65c8aa,
           type: 3}
         _probability: 0.4
+      - _prefab: {fileID: 5257383383886219576, guid: 69c2916168966d443a41090e5fd3d4a6,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: 6692274909324723205, guid: c2cfbde4e2115cc4090cc7c75e7a73fe,
+          type: 3}
+        _probability: 0.3
     _shards:
     - {fileID: -347466021665916017, guid: 7b763fefc07226d4d86548e3124f5ecd, type: 3}
     - {fileID: -347466021665916017, guid: da943ca000702324baeccaa5fb30088a, type: 3}

@@ -10,7 +10,11 @@ namespace KeepItAlive.World
         [SerializeField] private float _worldSize;
         [SerializeField] private StartPoint _startPoint;
         [SerializeField] private FinishPoint _finishPoint;
+        [SerializeField] private GameObject[] _decals;
+        [SerializeField] private int _decalAmount;
 
+        public GameObject[] Decals => _decals;
+        public int DecalAmount => _decalAmount;
         public float WorldSize => _worldSize;
         public StartPoint StartPoint => _startPoint;
         public FinishPoint FinishPoint => _finishPoint;

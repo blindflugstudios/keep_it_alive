@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden_WorldEnd
-  m_Shader: {fileID: 4800000, guid: a1600e39d1e2e9043bc8c951e83710f3, type: 3}
+  m_Name: All_ruin_tiles_1
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,20 +19,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
+    - _AlphaTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 121826139411b214c9c1a480697e979d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Distortion: 0.5
-    - _Light: 2
-    - _LightFreq: 12.2
-    - _LightSpeed: 0.37
-    - _LightThresh: 0.98
-    - _SmoothSize: 20
-    - _WorldSize: 200
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
     m_Colors:
-    - _CameraPos: {r: 102.27, g: 26.57, b: 0, a: 0}
-    - _CameraSize: {r: 53.37079, g: 30, b: 0, a: 0}
-    - _LightColor: {r: 0.6839622, g: 1, b: 0.9599968, a: 1}
-    - _LightSin: {r: 12.19, g: -6.95, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

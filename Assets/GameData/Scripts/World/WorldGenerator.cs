@@ -45,6 +45,7 @@ namespace KeepItAlive.World
 
             SpawnBiomes();
             SpawnInfo spawnInfo = SpawnShards();
+            SpawnDecals();
 			StartCoroutine(SpawnWorld());
 
 			return spawnInfo;
@@ -284,10 +285,10 @@ namespace KeepItAlive.World
                 var rndProbability = Random.Range(.0f, accProbability);
                 var enemy = GetRandomEnemy(rndProbability);
 
-                var rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, WorldGenerator.Instance.Settings.WorldSize));
+                var rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, Settings.WorldSize));
                 while (Physics2D.OverlapPoint(rndPosition) != null)
                 {
-                    rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, WorldGenerator.Instance.Settings.WorldSize));
+                    rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, Settings.WorldSize));
                 }
 
                 Instantiate(enemy, rndPosition, Quaternion.identity);
@@ -307,6 +308,15 @@ namespace KeepItAlive.World
             }
 
             return _settings.EnemySettings[0].Enemy;
+        }
+
+        public void SpawnDecals()
+        {
+            for (var i = 0; i < _settings.DecalAmount; ++i)
+            {
+                var rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, Settings.WorldSize));
+                Instantiate(_settings.Decals[Random.Range(0, _settings.Decals.Length)], rndPosition, Quaternion.identity);
+            }
         }
 		
 		public struct SpawnInfo
