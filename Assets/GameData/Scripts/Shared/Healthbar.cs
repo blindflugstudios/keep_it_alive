@@ -7,7 +7,7 @@ namespace KeepItAlive.Shared
         private const string DecimalFormat = "0.00";
 
         [SerializeField] 
-        private PlayerWorldSpaceUI _playerCanvas;
+        private HealthbarWorldUI _playerCanvas;
 
         [SerializeField]
         private GameObject _entity;
@@ -36,32 +36,32 @@ namespace KeepItAlive.Shared
             {
                 if(Entity.Health > 0)
                 {
-                    PlayerWorldSpaceUI.Instance.PlayerHealthLabelPrefab.SetAnchor(_healthAnchor);
-                    PlayerWorldSpaceUI.Instance.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth.ToString(DecimalFormat)} / {Entity.Health.ToString(DecimalFormat)}", Color.black);
+                    HealthbarWorldUI.Instance.PlayerHealthLabelPrefab.SetAnchor(_healthAnchor);
+                    HealthbarWorldUI.Instance.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth.ToString(DecimalFormat)} / {Entity.Health.ToString(DecimalFormat)}", Color.black);
                 }
                 else
                 {
-                     PlayerWorldSpaceUI.Instance.PlayerHealthLabelPrefab.DisplayText(string.Empty);
+                    HealthbarWorldUI.Instance.PlayerHealthLabelPrefab.DisplayText(string.Empty);
                 }
 
                 if(Entity.ReceivesRadiationDamage)
                 {
-                    PlayerWorldSpaceUI.Instance.PlayerRadiationDamageLabelPrefab.SetAnchor(_radiationAnchor);
-                    PlayerWorldSpaceUI.Instance.PlayerRadiationDamageLabelPrefab.DisplayText("Receiving Radiation Damage!", Color.black);
+                    HealthbarWorldUI.Instance.PlayerRadiationDamageLabelPrefab.SetAnchor(_radiationAnchor);
+                    HealthbarWorldUI.Instance.PlayerRadiationDamageLabelPrefab.DisplayText("Receiving Radiation Damage!", Color.black);
                 }
                 else
                 {
-                    PlayerWorldSpaceUI.Instance.PlayerRadiationDamageLabelPrefab.DisplayText(string.Empty);
+                    HealthbarWorldUI.Instance.PlayerRadiationDamageLabelPrefab.DisplayText(string.Empty);
                 }
 
                 if(Entity.ReceivesFreezeDamage)
                 {
-                    PlayerWorldSpaceUI.Instance.PlayerFreezeDamageLabelPrefab.SetAnchor(_freezeAnchor);
-                    PlayerWorldSpaceUI.Instance.PlayerFreezeDamageLabelPrefab.DisplayText("Receiving Freeze Damage!", Color.black);
+                    HealthbarWorldUI.Instance.PlayerFreezeDamageLabelPrefab.SetAnchor(_freezeAnchor);
+                    HealthbarWorldUI.Instance.PlayerFreezeDamageLabelPrefab.DisplayText("Receiving Freeze Damage!", Color.black);
                 }
                 else
                 {
-                    PlayerWorldSpaceUI.Instance.PlayerFreezeDamageLabelPrefab.DisplayText(string.Empty);
+                    HealthbarWorldUI.Instance.PlayerFreezeDamageLabelPrefab.DisplayText(string.Empty);
                 }
             }
         }

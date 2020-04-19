@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWorldSpaceUI : MonoBehaviour
+public class HealthbarWorldUI : MonoBehaviour
 {
     [SerializeField]
     private WorldSpaceLabel _playerHealthLabelPrefab;
@@ -19,7 +19,7 @@ public class PlayerWorldSpaceUI : MonoBehaviour
     
     public WorldSpaceLabel PlayerFreezeDamageLabelPrefab => _playerFreezeDamageLabelPrefab;
 
-    public static PlayerWorldSpaceUI Instance;
+    public static HealthbarWorldUI Instance;
     
     private void Awake()
     {
