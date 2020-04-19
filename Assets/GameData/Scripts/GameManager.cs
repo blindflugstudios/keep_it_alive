@@ -15,7 +15,7 @@ namespace KeepItAlive
         public void Start()
         {
             WorldGenerator.Instance.Generate();
-			SpawnPlayer(Vector3.zero);
+			//SpawnPlayer(Vector3.zero);
         }
 
 		private void SpawnPlayer(Vector3 position)
