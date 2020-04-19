@@ -1,6 +1,9 @@
-﻿using System;
+﻿using KeepItAlive.Characters;
+using System;
 using UnityEngine;
 using KeepItAlive.Shared;
+using System.Collections;
+using UnityEngine.InputSystem;
 
 namespace KeepItAlive.Player
 {
@@ -13,7 +16,14 @@ namespace KeepItAlive.Player
         [SerializeField]
         private EnvironmentalDamageConfiguration _environmentalDamageConfiguration;
 
+		[SerializeField] private CharacterAnimator _animator;
+		[SerializeField] private float _deathAnimationTime;
+
+		public event Action Dead;
+
         private DamageManager _damageManager;
+        
+		private PlayerInput _input;
 
         private float nextUpdate = 1.0f;
 
@@ -24,14 +34,25 @@ namespace KeepItAlive.Player
         public void Start()
         {
             _damageManager = new DamageManager(_environmentalDamageConfiguration);
-        }
+            _damageManager.ReceivesFreezeDamage = true;
+            _damageManager.ReceivesRadiationDamage = true;
+
+			_input = GetComponent<PlayerInput>();
+			_input.enabled = false;
+			_input.enabled = true;
+		}
 
         public void Update()
         {
             //Apply Environment effects every second
             if(Time.time >= nextUpdate)
-            {
-                _health = _damageManager.ApplyDamageReturnRemainingHealth(_health);   
+			{
+				float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+				if (_health > remainingHealth)
+				{
+					_animator?.TriggerDamage();					
+				}
+                _health = remainingHealth;   
                 nextUpdate = Mathf.FloorToInt(Time.time)+1;
             }
 
@@ -41,22 +62,36 @@ namespace KeepItAlive.Player
             }
         }
 
-        public void Die()
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            DeathAnimation();
-            Destroy(gameObject);
+            if (other.CompareTag(Tags.EnemyTag))
+            {
+                _health = _damageManager.ApplyEnemyDamageReturnRemainingHealth(_health);
+            }
         }
 
-        private bool DieCondition()
+		[ContextMenu("Die")]
+        public void Die()
+		{
+			StartCoroutine(DeathCoroutine());
+		}
+
+		private IEnumerator DeathCoroutine()
+		{
+			_input.enabled = false;
+			
+			_animator?.TriggerDeath();
+			yield return new WaitForSeconds(_deathAnimationTime); //Animation goes here
+			
+			Dead?.Invoke();
+			
+			Destroy(gameObject);
+		}
+
+		private bool DieCondition()
         {
             //TODO: Discuss and probably more to come
             return _health < 0.0f;
         }
-
-        private void DeathAnimation()
-        {
-            //TODO: IMPLEMENT
-            throw new NotImplementedException();
-        }
-    }
+	}
 }

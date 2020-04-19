@@ -5,13 +5,10 @@ namespace KeepItAlive.World
     public class WorldPrefab : MonoBehaviour
     {
         [SerializeField] private Collider2D _collider;
+        public Bounds Bounds => _collider.bounds;
+        public Rect Box => new Rect(_collider.bounds.center - _collider.bounds.extents, _collider.bounds.size);
 
-        public (Vector2, Vector2) GetSpawnBox()
-        {
-            return (_collider.bounds.center, _collider.bounds.extents);
-        }
-        
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         public void OnDrawGizmosSelected()
         {
             var color = Gizmos.color;
