@@ -45,7 +45,6 @@ namespace KeepItAlive.Player
         {
             _damageManager = new DamageManager(_configuration);
             _damageManager.ReceivesFreezeDamage = true;
-            _damageManager.ReceivesRadiationDamage = true;
 
 			_input = GetComponent<PlayerInput>();
 			_input.enabled = false;
@@ -74,9 +73,22 @@ namespace KeepItAlive.Player
 
 		private void OnTriggerEnter2D(Collider2D other)
         {
+            if(other.CompareTag(Tags.RadioactiveTag))
+            {
+                _damageManager.ReceivesRadiationDamage = true;
+            }
+
             if (other.CompareTag(Tags.EnemyTag))
             {
                 _health = _damageManager.ApplyEnemyDamageReturnRemainingHealth(_health);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if(other.CompareTag(Tags.RadioactiveTag))
+            {
+                _damageManager.ReceivesRadiationDamage = false;
             }
         }
 
