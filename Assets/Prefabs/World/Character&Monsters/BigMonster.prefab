@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 4861918136596067053}
   m_Layer: 0
   m_Name: BigMonster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,6 +639,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _target: {fileID: 0}
+  _animator: {fileID: 0}
   ShouldNavigate: 1
 --- !u!1 &5604507204165361586
 GameObject:
