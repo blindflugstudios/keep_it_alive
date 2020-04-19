@@ -165,7 +165,7 @@ namespace KeepItAlive.World
                     }
                     else
                     {
-                        worldObject = Instantiate(biomeSettings.WorldPrefabs[Random.Range(0, biomeSettings.WorldPrefabs.Length)]);
+                        worldObject = Instantiate(biomeSettings.GetRandomPrefab());
                     }
 
                     var pos = (biome.Position - new Vector2(biome.Size, biome.Size) / 2.0f) + new Vector2(biome.Size * Random.value, biome.Size * Random.value);
