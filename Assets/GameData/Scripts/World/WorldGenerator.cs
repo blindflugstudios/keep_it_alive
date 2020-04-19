@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using KeepItAlive.Science;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -48,8 +49,6 @@ namespace KeepItAlive.World
         {
             yield return null;
             SpawnPrefabs();
-            yield return null;
-            RemoveOverlappingPrefabs();
         }
 
         private void SpawnBiomes()
@@ -142,13 +141,19 @@ namespace KeepItAlive.World
         
         private void SpawnPrefabs()
         {
+            var biomeObjects = new List<WorldPrefab>();
             for (var i = 0; i < _spawnedBiomes.Count; i++)
             {
+                biomeObjects.Clear();
                 var biome = _spawnedBiomes[i];
                 var nearbyBiomes = GetNearbyBiomes(i);
                 var numSpawn = _settings.Biomes[biome.ID].SpawnCount;
                 var biomeSettings = _settings.Biomes[biome.ID];
                 WorldPrefab prevWorldObject = null;
+                for (var b = 0; b < nearbyBiomes.Count; b++)
+                {
+                    biomeObjects.AddRange(nearbyBiomes[b].ObjectsInBiome);
+                }
 
                 for (var j = 0; j < numSpawn; ++j)
                 {
@@ -166,11 +171,12 @@ namespace KeepItAlive.World
                     var pos = (biome.Position - new Vector2(biome.Size, biome.Size) / 2.0f) + new Vector2(biome.Size * Random.value, biome.Size * Random.value);
                     var collisionBounds = worldObject.Bounds;
                     collisionBounds.center += new Vector3(pos.x, pos.y, .0f);
-                    if (CheckForCollision(collisionBounds, biome, nearbyBiomes) == false)
+                    if (CheckForCollision(collisionBounds, biome, nearbyBiomes, biomeObjects) == false)
                     {
                         worldObject.transform.position = pos;
                         _spawnedWorldObjects.Add(worldObject);
                         biome.AddObjectToBiome(worldObject);
+                        biomeObjects.Add(worldObject);
                     }
                     else
                     {
@@ -212,7 +218,8 @@ namespace KeepItAlive.World
             return biomes;
         }
 
-        private bool CheckForCollision(Bounds collisionBounds, WorldBiome biome, List<WorldBiome> nearbyBiomes)
+        private bool CheckForCollision(Bounds collisionBounds, WorldBiome biome, List<WorldBiome> nearbyBiomes,
+            List<WorldPrefab> biomeObjects)
         {
             //biome collision
             for (var i = 0; i < nearbyBiomes.Count; i++)
@@ -224,20 +231,22 @@ namespace KeepItAlive.World
             }
             
             //shard collision
-            return Physics2D.OverlapBox(collisionBounds.center, collisionBounds.size, .0f) != null;
-        }
-
-        private void RemoveOverlappingPrefabs()
-        {
-            for (var i = _spawnedWorldObjects.Count - 1; i >= 0; i--)
+            if (Physics2D.OverlapBox(collisionBounds.center, collisionBounds.size, .0f) != null)
             {
-                var worldObject = _spawnedWorldObjects[i];
-                if (Physics2D.OverlapBoxAll(worldObject.Bounds.center, worldObject.Bounds.size, .0f).Length > 1)
+                return true;
+            }
+            
+            //objects collision
+            for (var i = 0; i < biomeObjects.Count; i++)
+            {
+                var objectBounds = biomeObjects[i].Bounds;
+                objectBounds.center += new Vector3(biomeObjects[i].transform.position.x, biomeObjects[i].transform.position.y, .0f);
+                if (objectBounds.Overlap(collisionBounds))
                 {
-                    Destroy(_spawnedWorldObjects[i].gameObject);
-                    _spawnedWorldObjects.RemoveAt(i);
+                    return true;
                 }
             }
+            return false;
         }
 
 #if UNITY_EDITOR
