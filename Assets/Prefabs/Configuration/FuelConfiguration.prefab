@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a06d0053a153b0a88c0494c65f4ed5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialFuel: 0
-  _fuelReductionPerTick: 0
+  _initialFuel: 50
+  _fuelReductionPerTick: 1

@@ -14,11 +14,14 @@ public class FuelInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Player player, InteractionType type)
     {
-        if (type == InteractionType.PickUp) player.Inventory.StoreItem(this);
+        if (type == InteractionType.PickUp)
+        {
+            player.Inventory.StoreItem(this);
+        }
     }
 
     public bool CanPlayerInteract(Player player)
     {
-        return true;
+        return gameObject.activeSelf;
     }
 }

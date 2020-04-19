@@ -4,8 +4,8 @@ namespace KeepItAlive.World
 {
     public sealed class StartPoint : MonoBehaviour
 	{
-		[SerializeField] private TorchFuelController _torch;
+		[SerializeField] private TorchInteractable _torch;
 
-		public TorchFuelController Torch => _torch;
+		public TorchInteractable Torch => _torch;
 	}
 }

@@ -10,6 +10,8 @@ public class PlayerInventory : MonoBehaviour
     public FuelType HeldFuelType =>
         (_currentItem as FuelInteractable)?.FuelType ?? FuelType.None;
 
+    public TorchInteractable HeldTorch { get; set; }
+
     public void StoreItem(IInteractable item)
     {
         if (HasItem) DropItem();
@@ -45,5 +47,9 @@ public class PlayerInventory : MonoBehaviour
 public enum FuelType
 {
     None,
-    Stone
+    Stone,
+    Stick,
+    Battery,
+    MonsterCorpse,
+    PlayerCorpse
 }

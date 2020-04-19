@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionButton: 101
   _pickUpButton: 102
-  _combatButton: 0
+  _combatButton: 32

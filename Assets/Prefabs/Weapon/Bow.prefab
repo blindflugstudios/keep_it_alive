@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880d51a7cb624136bea9c9dcbf095ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 4396154514927603665}
+  _playerTransform: {fileID: 0}
+  _Inventory: {fileID: 0}
   arrowPrefab: {fileID: 7525651529247863540, guid: 895140bfa2fca4f7f8cd59dc0dec8a02,
     type: 3}
-  arrowSpeed: 200
+  arrowSpeed: 60
   coolDownTime: 0.5

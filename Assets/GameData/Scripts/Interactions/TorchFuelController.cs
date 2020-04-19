@@ -1,4 +1,6 @@
-﻿using KeepItAlive.Shared;
+﻿using System;
+using KeepItAlive.Shared;
+using KeepItAlive.World;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -11,28 +13,22 @@ public class TorchFuelController : MonoBehaviour
 	[SerializeField] private SpriteRenderer _torchHead;
 	[SerializeField] private Gradient _fuelGradient;
     [SerializeField] private float _beamLenght;
-
-    private SpriteRenderer _shineRenderer;
+    [SerializeField] private SpriteRenderer _shineRenderer;
+    [SerializeField] private float _range;
+    
     private LineRenderer _lineRenderer;
 	private Vector3 _templeLocation;
     private float nextUpdate = 1.0f;
     private float _fuel;
-    private Vector3 _eulers;
 
-	public void SetDestinationCoords(Vector3 destinationCoords)
-	{
-		_templeLocation = destinationCoords;
-	}
-    
     void Start()
     {
-        _eulers = Vector3.up*90f;
-        _shineRenderer = GetComponent<SpriteRenderer>();
         _lineRenderer = GetComponent<LineRenderer>();
         
         _fuel = _fuelConfiguration.InitialFuel;
         _lineRenderer.positionCount = 2;
         AdjustSize();
+        _templeLocation = WorldGenerator.Instance.FinishPoint.transform.position;
     }
     
     void Update()
@@ -52,9 +48,7 @@ public class TorchFuelController : MonoBehaviour
         if (show)
         {
             var dirNormalized = (_templeLocation - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(dirNormalized) *
-                                 Quaternion.Euler(_eulers);
-            _lineRenderer.SetPositions(new Vector3[]
+            _lineRenderer.SetPositions(new[]
             {
                 transform.position,
                 transform.position + dirNormalized * _beamLenght
@@ -69,7 +63,7 @@ public class TorchFuelController : MonoBehaviour
 
 		Color color = GetFuelColor();
 		_torchHead.color = color;
-		_shineRenderer.color = color;
+		_shineRenderer.color = new Color(color.r, color.g, color.b, 0.15f);
 
         AdjustSize();
     }
@@ -82,6 +76,6 @@ public class TorchFuelController : MonoBehaviour
 
     private void AdjustSize()
     {
-        transform.localScale = new Vector3(_fuel / 70, _fuel / 70 * 0.6f, 0);
+        _shineRenderer.transform.localScale = new Vector3(_fuel * _range, _fuel *_range * 0.5f, 0);
     }    
 }

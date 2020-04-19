@@ -61,7 +61,7 @@ MonoBehaviour:
       _size: 35
       _strength: {x: 0.5, y: 0.7}
       _probability: 0.4
-      _spawnCount: 35
+      _spawnCount: 20
       _color: {r: 0, g: 1, b: 0.09392524, a: 1}
       _prefabSettings:
       - _prefab: {fileID: -7273945041619649083, guid: ebe86540c71c04e4a8ca361a2ed29b85,
@@ -91,11 +91,20 @@ MonoBehaviour:
       - _prefab: {fileID: 9187097921385629775, guid: 6cf744710859a8347acb5afad14165b9,
           type: 3}
         _probability: 0.3
+      - _prefab: {fileID: 2220688182214264155, guid: 97d8f8a7c5d2c7b4e8f0214f2eab9c48,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: 3808605339295586196, guid: db7536e5f5fadb34b86560b5c734d18b,
+          type: 3}
+        _probability: 0.2
+      - _prefab: {fileID: 1277195315886144224, guid: 88dd8301f1d47e64f98f1da5fae5a7dc,
+          type: 3}
+        _probability: 0.2
     - _offset: {x: 5, y: 2}
       _size: 20
       _strength: {x: 0.3, y: 0.4}
       _probability: 0.6
-      _spawnCount: 3
+      _spawnCount: 5
       _color: {r: 1, g: 0, b: 0, a: 1}
       _prefabSettings:
       - _prefab: {fileID: -617925648030745411, guid: af1b8f22310287943b9f771970d2395b,
@@ -128,11 +137,17 @@ MonoBehaviour:
       - _prefab: {fileID: 4424899195483591423, guid: 156bf7c304a46594595c222cc15ff9d7,
           type: 3}
         _probability: 0.05
+      - _prefab: {fileID: 3808605339295586196, guid: db7536e5f5fadb34b86560b5c734d18b,
+          type: 3}
+        _probability: 0.1
+      - _prefab: {fileID: 1277195315886144224, guid: 88dd8301f1d47e64f98f1da5fae5a7dc,
+          type: 3}
+        _probability: 0.1
     - _offset: {x: 5, y: 8}
       _size: 26
       _strength: {x: 0.4, y: 0.5}
       _probability: 0.1
-      _spawnCount: 3
+      _spawnCount: 4
       _color: {r: 0.07075471, g: 0.17547931, b: 1, a: 1}
       _prefabSettings:
       - _prefab: {fileID: 2470754341082552150, guid: d1df4f419436b8b4886ee126ec892af5,
@@ -157,6 +172,9 @@ MonoBehaviour:
           type: 3}
         _probability: 0.2
       - _prefab: {fileID: 6692274909324723205, guid: c2cfbde4e2115cc4090cc7c75e7a73fe,
+          type: 3}
+        _probability: 0.3
+      - _prefab: {fileID: 1277195315886144224, guid: 88dd8301f1d47e64f98f1da5fae5a7dc,
           type: 3}
         _probability: 0.3
     _shards:

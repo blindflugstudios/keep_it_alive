@@ -25,6 +25,7 @@ namespace KeepItAlive.World
         private readonly List<float> _probabilities = new List<float>();
 
         public WorldGeneratorSettings Settings => _settings;
+        public FinishPoint FinishPoint { get; private set; }
 
         public void Awake()
         {
@@ -142,7 +143,8 @@ namespace KeepItAlive.World
 				else if (spawnedShard.TryGetComponent(out FinishPoint finishPoint))
 				{
 					spawnInfo.FinishPoint = finishPoint;
-				}
+                    FinishPoint = finishPoint;
+                }
 
 				var shardRect = shardComponent.Box;
                 var shardSize = shardRect.size;

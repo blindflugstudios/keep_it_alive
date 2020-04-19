@@ -13,7 +13,7 @@ public class InteractableManager : MonoBehaviour
     {
         get
         {
-            _interactablesInRange = _interactablesInRange.OrderBy(i => i.DistanceToPlayer).ToList();
+            _interactablesInRange = _interactablesInRange.Where(i => i.InteractionPossible).OrderBy(i => i.DistanceToPlayer).ToList();
             return _interactablesInRange.FirstOrDefault(a => a.InteractionPossible);
         }
     }
@@ -26,23 +26,38 @@ public class InteractableManager : MonoBehaviour
         if (closestInteractable != null)
         {
             closestInteractable.DisplayInteractionText();
-            if (Input.GetKeyDown(_keyBinding.InteractionButton))
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(_keyBinding.InteractionButton))
             {
                 closestInteractable.Interactable.Interact(_player, InteractionType.Interact);
             }
-            else if (Input.GetKeyDown(_keyBinding.PickUpButton))
+            else if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(_keyBinding.PickUpButton))
             {
                 closestInteractable.Interactable.Interact(_player, InteractionType.PickUp);
             }
         }
+        
+        if (Input.GetKeyDown(_keyBinding.CombatButton))
+        {
+            _player.Inventory.HeldTorch?.DropTorch(_player);
+        }
+        
+        //cleanup
+        for (var i = _interactablesInRange.Count - 1; i >= 0; i--)
+        {
+            if (((MonoBehaviour) _interactablesInRange[i].Interactable).gameObject.activeSelf == false || _interactablesInRange[i].Interactable.CanPlayerInteract(_player) == false)
+            {
+                _interactablesInRange[i].Destroy();
+                _interactablesInRange.RemoveAt(i);
+            }
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         if (col.isTrigger)
         {
-            var interactable = col.GetComponent<IInteractable>();
-            if (interactable != null && _interactablesInRange.Any(i => i.Interactable == interactable) == false)
+            var interactable = col.GetComponentInParent<IInteractable>();
+            if (interactable != null && interactable.CanPlayerInteract(_player) && _interactablesInRange.Any(i => i.Interactable == interactable) == false)
             {
                 var interactionData = new InteractableData(interactable, WorldSpaceUi.Instance.GetLabel(), _player);
                 _interactablesInRange.Add(interactionData);
@@ -60,8 +75,8 @@ public class InteractableManager : MonoBehaviour
                 var data = _interactablesInRange.FirstOrDefault(i => i.Interactable == interactable);
                 if (data != null)
                 {
-                    data.Destroy();
                     _interactablesInRange.Remove(data);
+                    data.Destroy();
                 }
             }
         }
@@ -87,14 +102,11 @@ public class InteractableManager : MonoBehaviour
 
         public void Update()
         {
-            if (Interactable != null)
+            var interactable = (Interactable as MonoBehaviour);
+            if (interactable != null)
             {
-                DistanceToPlayer = Vector3.Distance((Interactable as MonoBehaviour).transform.position,
+                DistanceToPlayer = Vector3.Distance(interactable.transform.position,
                     _player.transform.position);
-                if (InteractionPossible == false)
-                    _label.DisplayText(Interactable.NoInteractText, Color.red);
-                else
-                    _label.DisplayText("");
             }
         }
 

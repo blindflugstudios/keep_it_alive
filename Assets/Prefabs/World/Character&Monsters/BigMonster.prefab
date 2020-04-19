@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _deathItemPrefab: {fileID: 6112183776377866359, guid: d1df4f419436b8b4886ee126ec892af5,
+  _deathItemPrefab: {fileID: 6299535870232168253, guid: 5ef71fda24c3a37498dbd1dc61a6f653,
     type: 3}
   _animator: {fileID: 2707988059576211127}
   _deathAnimationTime: 1

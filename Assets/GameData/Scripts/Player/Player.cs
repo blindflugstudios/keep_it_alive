@@ -69,6 +69,12 @@ namespace KeepItAlive.Player
 
 		private void Update()
         {
+	        if (Inventory.HasTorch)
+	        {
+		        _damageManager.ReceivesFreezeDamage = false;
+		        _damageManager.ReceivesRadiationDamage = true;
+	        }
+	        
             //Apply Environment effects every second
             if(Time.time >= nextUpdate)
 			{

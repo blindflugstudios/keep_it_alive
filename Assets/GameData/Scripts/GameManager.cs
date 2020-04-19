@@ -28,7 +28,6 @@ namespace KeepItAlive
 			WorldGenerator.SpawnInfo spawnInfo = WorldGenerator.Instance.Generate();
 			spawnInfo.FinishPoint.DestinationReached += OnDestinationReached;
 			_finishPoint = spawnInfo.FinishPoint;
-			spawnInfo.StartPoint.Torch.SetDestinationCoords(spawnInfo.FinishPoint.transform.position);
 			SpawnPlayer(spawnInfo.StartPoint.transform.position);
 		}
 

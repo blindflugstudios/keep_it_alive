@@ -32,7 +32,7 @@ Material:
     - _SmoothSize: 20
     - _WorldSize: 200
     m_Colors:
-    - _CameraPos: {r: 102.27, g: 26.57, b: 0, a: 0}
-    - _CameraSize: {r: 53.37079, g: 30, b: 0, a: 0}
+    - _CameraPos: {r: 94.26445, g: 44.767387, b: 0, a: 0}
+    - _CameraSize: {r: 17.791306, g: 10, b: 0, a: 0}
     - _LightColor: {r: 0.6839622, g: 1, b: 0.9599968, a: 1}
     - _LightSin: {r: 12.19, g: -6.95, b: 0, a: 0}

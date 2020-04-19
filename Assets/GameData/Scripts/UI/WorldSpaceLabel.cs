@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class WorldSpaceLabel : MonoBehaviour
@@ -15,6 +14,11 @@ public class WorldSpaceLabel : MonoBehaviour
     public void DisplayText(string text)
     {
         DisplayText(text, Color.white);
+    }
+
+    public void HideText()
+    {
+        DisplayText(string.Empty, Color.white);
     }
 
     public void SetAnchor(Transform anchor)

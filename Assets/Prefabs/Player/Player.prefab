@@ -190,8 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97501bf82acc745fd8962b8cddfbf1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerCanvas: {fileID: 6427388288027027769, guid: 7dbfe90165c99f89ca5ef9a73a4c7b08,
-    type: 3}
   _entity: {fileID: 8263053741403113933}
   _healthAnchor: {fileID: 6058101878895993599}
   _radiationAnchor: {fileID: 8538177549717126434}
@@ -215,6 +213,7 @@ GameObject:
   - component: {fileID: 8263053741150675588}
   - component: {fileID: 6156356324643076748}
   - component: {fileID: 8617985599418230636}
+  - component: {fileID: -5321583599610328226}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -314,6 +313,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _animator: {fileID: 6882638622489703480}
+  _playerAnimator: {fileID: 0}
 --- !u!114 &6882638622489703480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +534,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5321583599610328226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263053741403113933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bbe6f5ecf6480aa4be24a700c46baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8747523800683289583
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,9 +640,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4396154514927603666, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4,
         type: 3}
-      propertyPath: arrowSpeed
-      value: 60
-      objectReference: {fileID: 0}
+      propertyPath: _playerTransform
+      value: 
+      objectReference: {fileID: 8263053741403113938}
+    - target: {fileID: 4396154514927603666, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4,
+        type: 3}
+      propertyPath: _Inventory
+      value: 
+      objectReference: {fileID: 1737232178869905924}
     - target: {fileID: 4396154514927603667, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4,
         type: 3}
       propertyPath: m_Name
