@@ -34,16 +34,18 @@ namespace KeepItAlive.World
             Instance = this;
         }
 
-        public void Generate()
+        public SpawnInfo Generate()
         {
             _spawnedBiomes.Clear();
             _spawnedShards.Clear();
             _spawnedWorldObjects.Clear();
             
             SpawnBiomes();
-            SpawnShards();
+            SpawnInfo spawnInfo = SpawnShards();
             StartCoroutine(SpawnPrefabsRoutine());
-        }
+
+			return spawnInfo;
+		}
 
         private IEnumerator SpawnPrefabsRoutine()
         {
@@ -110,8 +112,9 @@ namespace KeepItAlive.World
             return -1;
         }
 
-        private void SpawnShards()
+        private SpawnInfo SpawnShards()
         {
+			var spawnInfo = new SpawnInfo();
             var shardsToSpawn = _settings.Shards.ToList();
             shardsToSpawn.AddRange(new[]
                 {_settings.StartPoint.GetComponent<WorldShard>(), _settings.FinishPoint.GetComponent<WorldShard>()});
@@ -126,7 +129,16 @@ namespace KeepItAlive.World
                 var spawnedShard = Instantiate(shard.gameObject);
                 var shardComponent = spawnedShard.GetComponent<WorldShard>();
 
-                var shardRect = shardComponent.Box;
+				if (spawnedShard.TryGetComponent(out StartPoint startPoint))
+				{
+					spawnInfo.StartPoint = startPoint;
+				}
+				else if (spawnedShard.TryGetComponent(out FinishPoint finishPoint))
+				{
+					spawnInfo.FinishPoint = finishPoint;
+				}
+
+				var shardRect = shardComponent.Box;
                 var shardSize = shardRect.size;
                 var shardMaxSize = Mathf.Min(Mathf.Max(shardSize.x, shardSize.y) + cellSize / 4.0f, cellSize);
 
@@ -137,7 +149,9 @@ namespace KeepItAlive.World
                 spawnedShard.transform.position = new Vector3(posX, posY, .0f);
                 _spawnedShards.Add(spawnedShard.GetComponent<WorldShard>());
             }
-        }
+
+			return spawnInfo;
+		}
         
         private void SpawnPrefabs()
         {
@@ -248,6 +262,12 @@ namespace KeepItAlive.World
             }
             return false;
         }
+		
+		public struct SpawnInfo
+		{
+			public StartPoint StartPoint { get; set; }
+			public FinishPoint FinishPoint { get; set; }
+		}
 
 #if UNITY_EDITOR
         public void OnDrawGizmosSelected()
