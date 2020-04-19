@@ -11,6 +11,7 @@ namespace KeepItAlive.Characters
 		[Range(0f, 1f)]
 		[SerializeField] private float _depthMovementScale;
 		[SerializeField] private LayerMask _obstacleLayer;
+		[SerializeField] private CharacterAnimator _animator;
 		
 		private BoxCollider2D _collider;
 		private Transform _transform;
@@ -30,6 +31,8 @@ namespace KeepItAlive.Characters
 		{
 			UpdateRaycastOrigins();
 			MoveOneFrame(Time.deltaTime);
+			
+			_animator?.SetMove(_currentVelocity.magnitude > 0f);
 		}
 
 		private void MoveOneFrame(float deltaTime)
