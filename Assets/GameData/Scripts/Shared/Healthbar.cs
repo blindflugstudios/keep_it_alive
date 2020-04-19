@@ -7,7 +7,8 @@ namespace KeepItAlive.Shared
         [SerializeField]
         private MonoBehaviour _entity;
 
-        private IEntity Entity => _entity.GetComponent<Player.Player>() is IEntity ? _entity.GetComponent<Player.Player>() as IEntity : null;
+        private IEntity Entity => _entity == null ? null :
+         _entity.GetComponent<Player.Player>() is IEntity ? _entity.GetComponent<Player.Player>() as IEntity : null;
 
         private float _initialHealth;
 
@@ -29,7 +30,7 @@ namespace KeepItAlive.Shared
         {
             GUI.contentColor = Color.black;
 
-            if(Entity.Health >= 0)
+            if(Entity != null && Entity.Health >= 0)
             {
                 GUI.Box(new Rect(700, 10, _healthBarLength, 20), $"{_initialHealth.ToString()} / {Entity.Health.ToString()} ");
             }
