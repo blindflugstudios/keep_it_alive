@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using KeepItAlive.Enemies;
 using KeepItAlive.Science;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,6 +23,8 @@ namespace KeepItAlive.World
         private readonly List<WorldPrefab> _spawnedWorldObjects = new List<WorldPrefab>();
         
         private readonly List<float> _probabilities = new List<float>();
+
+        public WorldGeneratorSettings Settings => _settings;
 
         public void Awake()
         {
@@ -51,6 +54,8 @@ namespace KeepItAlive.World
         {
             yield return null;
             SpawnPrefabs();
+            yield return null;
+            SpawnEnemies();
         }
 
         private void SpawnBiomes()
@@ -264,6 +269,44 @@ namespace KeepItAlive.World
                 }
             }
             return false;
+        }
+        
+        public void SpawnEnemies()
+        {
+            var accProbability = .0f;
+            for (var i = 0; i < _settings.EnemySettings.Length; i++)
+            {
+                accProbability += _settings.EnemySettings[i].Probability;
+            }
+
+            for (var i = 0; i < _settings.StartingEnemies; ++i)
+            {
+                var rndProbability = Random.Range(.0f, accProbability);
+                var enemy = GetRandomEnemy(rndProbability);
+
+                var rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, WorldGenerator.Instance.Settings.WorldSize));
+                while (Physics2D.OverlapPoint(rndPosition) != null)
+                {
+                    rndPosition = new Vector2(Random.Range(.0f, Settings.WorldSize), Random.Range(.0f, WorldGenerator.Instance.Settings.WorldSize));
+                }
+
+                Instantiate(enemy, rndPosition, Quaternion.identity);
+            }
+        }
+        
+        private Enemy GetRandomEnemy(float rndProbability)
+        {
+            var enemyProbability = .0f;
+            for (var i = 0; i < _settings.EnemySettings.Length; i++)
+            {
+                enemyProbability += _settings.EnemySettings[i].Probability;
+                if (rndProbability <= enemyProbability)
+                {
+                    return _settings.EnemySettings[i].Enemy;
+                }
+            }
+
+            return _settings.EnemySettings[0].Enemy;
         }
 		
 		public struct SpawnInfo
