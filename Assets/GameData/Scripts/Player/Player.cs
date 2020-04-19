@@ -46,9 +46,13 @@ namespace KeepItAlive.Player
 			}
 		}
 
+        private void Awake()
+        {
+             _damageManager = new DamageManager(_configuration);
+        }
+
 		private void Start()
         {
-            _damageManager = new DamageManager(_configuration);
             _damageManager.ReceivesFreezeDamage = true;
 
 			_input = GetComponent<PlayerInput>();
