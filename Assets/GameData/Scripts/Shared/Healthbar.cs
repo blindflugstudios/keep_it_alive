@@ -5,10 +5,9 @@ namespace KeepItAlive.Shared
     public class Healthbar : MonoBehaviour
     {
         [SerializeField]
-        private MonoBehaviour _entity;
+        private GameObject _entity;
 
-        private IEntity Entity => _entity == null ? null :
-         _entity.GetComponent<Player.Player>() is IEntity ? _entity.GetComponent<Player.Player>() as IEntity : null;
+        private IEntity Entity => _entity.GetComponent<IEntity>();
 
         private float _initialHealth;
 

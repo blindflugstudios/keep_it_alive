@@ -25,6 +25,7 @@ namespace KeepItAlive.Player
 		private PlayerInput _input;
 
         private float nextUpdate = 1.0f;
+		private bool _isDead;
 
         public float Health => _health;
 
@@ -38,14 +39,21 @@ namespace KeepItAlive.Player
 		[ContextMenu("Die")]
 		public void Die()
 		{
-			StartCoroutine(DeathCoroutine());
+			if (_isDead == false)
+			{
+				StartCoroutine(DeathCoroutine());
+				_isDead = true;
+			}
 		}
+
+        private void Awake()
+        {
+             _damageManager = new DamageManager(_configuration);
+             _damageManager.ReceivesFreezeDamage = true;
+        }
 
 		private void Start()
         {
-            _damageManager = new DamageManager(_configuration);
-            _damageManager.ReceivesFreezeDamage = true;
-
 			_input = GetComponent<PlayerInput>();
 			_input.enabled = false;
 			_input.enabled = true;
@@ -56,12 +64,7 @@ namespace KeepItAlive.Player
             //Apply Environment effects every second
             if(Time.time >= nextUpdate)
 			{
-				float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
-				if (_health > remainingHealth)
-				{
-					_animator?.TriggerDamage();					
-				}
-                _health = remainingHealth;   
+				DealDamage();
                 nextUpdate = Mathf.FloorToInt(Time.time)+1;
             }
 
@@ -75,12 +78,13 @@ namespace KeepItAlive.Player
         {
             if(other.CompareTag(Tags.RadioactiveTag))
             {
+                _damageManager.ReceivesFreezeDamage = false;
                 _damageManager.ReceivesRadiationDamage = true;
             }
 
             if (other.CompareTag(Tags.EnemyTag))
             {
-                _health = _damageManager.ApplyEnemyDamageReturnRemainingHealth(_health);
+                DealDamage();
             }
         }
 
@@ -88,9 +92,22 @@ namespace KeepItAlive.Player
         {
             if(other.CompareTag(Tags.RadioactiveTag))
             {
+                _damageManager.ReceivesFreezeDamage = true;
                 _damageManager.ReceivesRadiationDamage = false;
             }
         }
+
+		private void DealDamage()
+		{
+			float remainingHealth = _damageManager.ApplyDamageReturnRemainingHealth(_health);
+			if (_health > remainingHealth)
+			{
+				_animator?.TriggerDamage();					
+			}
+			_health = remainingHealth; 
+		}
+
+
 
 		private IEnumerator DeathCoroutine()
 		{
