@@ -131,6 +131,11 @@ MonoBehaviour:
     - {fileID: -347466021665916017, guid: b1e90bea9811d2d4ebf9eb13d7ac50e6, type: 3}
     - {fileID: -347466021665916017, guid: 96b6813879049324594e42267460c265, type: 3}
     - {fileID: -347466021665916017, guid: ebb2301aabaa938479c1eda576af0e31, type: 3}
+    _startingEnemies: 20
+    _enemySettings:
+    - _enemy: {fileID: -9060900179814872012, guid: 232bf62f4b5fd9444b6eb8b92856cb12,
+        type: 3}
+      _probability: 1
   _debugBiomes: 1
 --- !u!1001 &1939424650307460102
 PrefabInstance:

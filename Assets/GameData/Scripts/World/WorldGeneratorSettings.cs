@@ -29,5 +29,12 @@ namespace KeepItAlive.World
         [SerializeField] private WorldShard[] _shards;
 
         public WorldShard[] Shards => _shards;
+
+        [Space] [Header("Enemies")] 
+        [SerializeField] private int _startingEnemies;
+        [SerializeField] private EnemySpawnSettings[] _enemySettings;
+
+        public int StartingEnemies => _startingEnemies;
+        public EnemySpawnSettings[] EnemySettings => _enemySettings;
     }
 }
