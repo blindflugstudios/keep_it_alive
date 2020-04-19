@@ -11,6 +11,12 @@ TextureImporter:
   - first:
       213: 67960436286172935
     second: wallCorner
+  - first:
+      213: -4633226683543741569
+    second: player_skeleton
+  - first:
+      213: 6933443488761356095
+    second: Monster_Skeleton
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -154,6 +160,48 @@ TextureImporter:
       bones: []
       spriteID: 70f2e9f18a171f000800000000000000
       internalID: 67960436286172935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_skeleton
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 418
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b938311e873bfb0800000000000000
+      internalID: -4633226683543741569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monster_Skeleton
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 0
+        width: 442
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3f9dd93e1a883060800000000000000
+      internalID: 6933443488761356095
       vertices: []
       indices: 
       edges: []
