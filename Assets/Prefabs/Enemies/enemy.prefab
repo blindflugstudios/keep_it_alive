@@ -69,8 +69,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003e1ade5b4d2e241ba3bec415d18efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
   _agent: {fileID: 4621099793754308033}
+  _jumpDistance: 0.8
+  _jumpFrequency: {x: 1, y: 3}
+  _jumpTime: 0.1
+  _target: {fileID: 0}
+  ShouldNavigate: 1
 --- !u!212 &1085840208
 SpriteRenderer:
   m_ObjectHideFlags: 0
