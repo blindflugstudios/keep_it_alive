@@ -15,11 +15,16 @@ namespace KeepItAlive
         public void Start()
         {
             WorldGenerator.Instance.Generate();
-			//SpawnPlayer(Vector3.zero);
+			SpawnPlayer(Vector3.zero);
         }
 
 		private void SpawnPlayer(Vector3 position)
 		{
+			if (_playerPrefabs == null || _playerPrefabs.Length <= 0)
+			{
+				return;
+			}
+			
 			if (_player != null)
 			{
 				_player.Dead -= OnPlayerDead;
