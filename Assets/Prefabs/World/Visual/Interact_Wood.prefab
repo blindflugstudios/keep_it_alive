@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019712699478828140}
+  - component: {fileID: -7273945041619649083}
   m_Layer: 0
   m_Name: Interact_Wood
   m_TagString: Untagged
@@ -24,13 +25,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2604449583162173670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.78, y: 1.32, z: -12.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9126920093862948917}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7273945041619649083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604449583162173670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b691fdee278a47c2ad690ff5649b7fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 6074007745189326792}
 --- !u!1 &8150494046653193995
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,13 +153,33 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.8749614, y: -1.635432}
-      - {x: 0.011981964, y: -1.7792058}
-      - {x: 0.75589466, y: -1.7200975}
-      - {x: 1.1629, y: -1.2740581}
-      - {x: 0.91000175, y: -0.88670576}
-      - {x: 0.5797825, y: -0.70590436}
-      - {x: -0.14936733, y: -0.5947551}
-      - {x: -0.7785897, y: -0.7608545}
-      - {x: -1.0751362, y: -1.013617}
-      - {x: -1.2020197, y: -1.2312106}
+    - - {x: 0.435, y: -0.08}
+      - {x: 0.435, y: -0.049999997}
+      - {x: 0.42499998, y: -0.03}
+      - {x: 0.345, y: 0.01}
+      - {x: 0.225, y: 0.01}
+      - {x: 0.145, y: 0.06}
+      - {x: 0.105, y: 0.01}
+      - {x: -0.005, y: -0.02}
+      - {x: -0.145, y: 0.02}
+      - {x: -0.325, y: 0.19}
+      - {x: -0.315, y: 0.32999998}
+      - {x: -0.375, y: 0.47}
+      - {x: -0.435, y: 0.47}
+      - {x: -0.465, y: 0.34}
+      - {x: -0.525, y: 0.25}
+      - {x: -0.505, y: 0.14999999}
+      - {x: -0.39499998, y: 0.12}
+      - {x: -0.515, y: 0.099999994}
+      - {x: -0.565, y: 0.06}
+      - {x: -0.565, y: -0.01}
+      - {x: -0.53499997, y: -0.04}
+      - {x: -0.175, y: -0.089999996}
+      - {x: -0.055, y: -0.099999994}
+      - {x: -0.085, y: -0.19999999}
+      - {x: -0.074999996, y: -0.22999999}
+      - {x: -0.015, y: -0.22999999}
+      - {x: 0.185, y: -0.21}
+      - {x: 0.275, y: -0.22}
+      - {x: 0.315, y: -0.19}
+      - {x: 0.285, y: -0.14}
