@@ -328,8 +328,7 @@ MonoBehaviour:
   _camera: {fileID: 48932251}
   _playerPrefabs:
   - {fileID: 8263053741403113939, guid: 58807b1347c4776be8b8663616a4c430, type: 3}
-  _damageConfiguration: {fileID: 0}
-  _gameFinishedScreen: {fileID: 0}
+  _gameFinishedScreen: {fileID: 802067585}
 --- !u!4 &471973440
 Transform:
   m_ObjectHideFlags: 0
@@ -436,6 +435,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &802067585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177134514899147325, guid: c2f99337de448cc4a9948098e77ee49a,
+    type: 3}
+  m_PrefabInstance: {fileID: 909606496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &894748061
 PrefabInstance:
   m_ObjectHideFlags: 0

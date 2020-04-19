@@ -11,7 +11,6 @@ namespace KeepItAlive
 	{
 		[SerializeField] private CameraController _camera;
 		[SerializeField] private Player.Player[] _playerPrefabs;
-		[SerializeField] private EnvironmentalDamageConfiguration _damageConfiguration;
 		[SerializeField] private GameObject _gameFinishedScreen;
 
 		private Player.Player _player;

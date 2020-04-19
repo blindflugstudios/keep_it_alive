@@ -16,6 +16,7 @@ namespace KeepItAlive.Enemies
 		[SerializeField] private float _deathAnimationTime;
 
         private DamageManager _damageManager;
+		private bool _isDead;
 
         public float Health => _health;
 
@@ -34,7 +35,11 @@ namespace KeepItAlive.Enemies
 
         public void Die()
         {
-            StartCoroutine(DeathAnimation());
+			if (_isDead == false)
+			{
+				StartCoroutine(DeathAnimation());
+				_isDead = true;
+			}
         }
         
         private bool DieCondition()
