@@ -4,6 +4,8 @@ namespace KeepItAlive.Shared
 {
     public class Healthbar : MonoBehaviour
     {
+        private const string DecimalFormat = "0.00";
+
         [SerializeField] 
         private PlayerWorldSpaceUI _playerCanvas;
 
@@ -35,7 +37,7 @@ namespace KeepItAlive.Shared
                 if(Entity.Health > 0)
                 {
                     PlayerWorldSpaceUI.Instance.PlayerHealthLabelPrefab.SetAnchor(_healthAnchor);
-                    PlayerWorldSpaceUI.Instance.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth} / {Entity.Health}", Color.black);
+                    PlayerWorldSpaceUI.Instance.PlayerHealthLabelPrefab.DisplayText($"{_initialHealth.ToString(DecimalFormat)} / {Entity.Health.ToString(DecimalFormat)}", Color.black);
                 }
                 else
                 {
