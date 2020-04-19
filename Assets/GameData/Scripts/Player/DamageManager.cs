@@ -36,7 +36,6 @@ namespace KeepItAlive.Player
             return health - 15;
         }
 
-
         private float Freeze(float health)
         {
             return health - _environmentalDamageConfiguration.FreezeDamagePerTick;

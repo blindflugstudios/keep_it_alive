@@ -15,7 +15,7 @@ namespace KeepItAlive.Shared
 
         void Start () 
         {
-            if(Entity == null)
+            if(_entity == null && Entity == null)
             {
                 Debug.Log("Please attach IEntity");
                 return;
@@ -27,6 +27,8 @@ namespace KeepItAlive.Shared
 
         private void OnGUI() 
         {
+            GUI.contentColor = Color.black;
+
             if(Entity.Health >= 0)
             {
                 GUI.Box(new Rect(700, 10, _healthBarLength, 20), $"{_initialHealth.ToString()} / {Entity.Health.ToString()} ");

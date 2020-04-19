@@ -112,6 +112,8 @@ namespace KeepItAlive.Player
 
         private void OnGUI() 
         {
+            GUI.contentColor = Color.black;
+
             if(_damageManager.ReceivesFreezeDamage)
             {
                 GUI.Box(new Rect(700, 50, 200, 20), "Receiving Freeze Damage!");
