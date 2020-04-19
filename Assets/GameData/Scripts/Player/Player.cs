@@ -107,6 +107,11 @@ namespace KeepItAlive.Player
 			_health = remainingHealth; 
 		}
 
+		public void DealDamage(float damge)
+		{
+			_animator?.TriggerDamage();
+			_health -= damge;
+		}
 
 
 		private IEnumerator DeathCoroutine()
