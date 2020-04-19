@@ -5,7 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class TorchFuelController : MonoBehaviour
 {
+	private const float MIN_FUEL = 10f;
+	private const float MAX_FUEL = 110f;
 	[SerializeField] private Configuration _fuelConfiguration;
+	[SerializeField] private SpriteRenderer _torchHead;
+	[SerializeField] private Gradient _fuelGradient;
     [SerializeField] private float _beamLenght;
 
     private SpriteRenderer _shineRenderer;
@@ -38,7 +42,6 @@ public class TorchFuelController : MonoBehaviour
         if(Time.time >= nextUpdate)
         {
             AddFuel(-_fuelConfiguration.FuelReductionPerTick);
-            AdjustSize();
             nextUpdate = Mathf.FloorToInt(Time.time)+1;
         }
     }
@@ -62,13 +65,23 @@ public class TorchFuelController : MonoBehaviour
     public void AddFuel(float amount)
     {
         _fuel += amount;
-        _fuel = Mathf.Clamp(_fuel, 10.0f, 110.0f);
+        _fuel = Mathf.Clamp(_fuel, MIN_FUEL, MAX_FUEL);
+
+		Color color = GetFuelColor();
+		_torchHead.color = color;
+		_shineRenderer.color = color;
 
         AdjustSize();
     }
 
+	private Color GetFuelColor()
+	{
+		float t = Mathf.InverseLerp(MIN_FUEL, MAX_FUEL, _fuel);
+		return _fuelGradient.Evaluate(t);
+	}
+
     private void AdjustSize()
     {
-        transform.localScale = new Vector3(_fuel / 100, _fuel / 100, 0);
+        transform.localScale = new Vector3(_fuel / 70, _fuel / 70 * 0.6f, 0);
     }    
 }
