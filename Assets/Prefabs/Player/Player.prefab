@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97501bf82acc745fd8962b8cddfbf1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerCanvas: {fileID: 6427388288027027769, guid: 7dbfe90165c99f89ca5ef9a73a4c7b08,
+    type: 3}
   _entity: {fileID: 8263053741403113933}
 --- !u!1 &8263053741403113933
 GameObject:
@@ -188,6 +190,8 @@ MonoBehaviour:
   _configuration: {fileID: 11400000, guid: 00b633fdd3f976242a450365073f01fc, type: 2}
   _animator: {fileID: 6882638622489703480}
   _deathAnimationTime: 1.5
+  _playerCanvas: {fileID: 6427388288027027769, guid: 7dbfe90165c99f89ca5ef9a73a4c7b08,
+    type: 3}
   Inventory: {fileID: 1737232178869905924}
 --- !u!114 &-688583960914528756
 MonoBehaviour:
@@ -539,12 +543,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4, type: 3}
---- !u!4 &5921576851953275025 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4396154514927603665, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 8011883914427932480}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5921576851953275026 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4396154514927603666, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4,
@@ -557,3 +555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880d51a7cb624136bea9c9dcbf095ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5921576851953275025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4396154514927603665, guid: 33af5c3e6474b4ffb8e1b8f1392f91e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8011883914427932480}
+  m_PrefabAsset: {fileID: 0}
