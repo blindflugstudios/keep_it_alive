@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bd5b08936c4d05bafbea45f1b513b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _playerPrefabs:
+  - {fileID: 0}
 --- !u!4 &389884338
 Transform:
   m_ObjectHideFlags: 0
@@ -493,7 +496,7 @@ MonoBehaviour:
       _size: 10
       _strength: {x: 0.4, y: 0.6}
       _probability: 0.5
-      _spawnCount: 5
+      _spawnCount: 12
       _color: {r: 0, g: 1, b: 0.09392524, a: 1}
       _worldPrefabs:
       - {fileID: 1312448644991080018, guid: 8c84f688a1d024848bcdb3d430ab5ebf, type: 3}
@@ -501,7 +504,7 @@ MonoBehaviour:
       _size: 12
       _strength: {x: 0.5, y: 0.8}
       _probability: 0.5
-      _spawnCount: 5
+      _spawnCount: 6
       _color: {r: 1, g: 0, b: 0, a: 1}
       _worldPrefabs:
       - {fileID: 1312448644991080018, guid: 020951627a3a101498b141953a771706, type: 3}
