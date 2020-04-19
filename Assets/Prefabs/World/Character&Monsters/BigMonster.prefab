@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 3735359700252884810}
   - component: {fileID: 4861918136596067053}
   - component: {fileID: 1823522739}
+  - component: {fileID: -8951170496200147687}
   m_Layer: 0
   m_Name: BigMonster
   m_TagString: Enemy
@@ -743,6 +744,18 @@ MonoBehaviour:
     type: 3}
   _attackCooldown: 3
   _attackDistance: 3
+--- !u!114 &-8951170496200147687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907028777999732584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bbe6f5ecf6480aa4be24a700c46baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5604507204165361586
 GameObject:
   m_ObjectHideFlags: 0
